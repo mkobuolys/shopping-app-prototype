@@ -6,11 +6,10 @@ import 'package:http/http.dart' as http;
 
 import 'models/models.dart';
 
-class GetProductsRequestFailure implements Exception {}
-
 class BestBuyApiClient {
-  BestBuyApiClient({http.Client httpClient})
-      : _httpClient = httpClient ?? http.Client();
+  BestBuyApiClient({
+    http.Client httpClient,
+  }) : _httpClient = httpClient ?? http.Client();
 
   static const _baseUrl = 'api.bestbuy.com';
   static const _defaultParameters = <String, String>{
@@ -20,7 +19,7 @@ class BestBuyApiClient {
 
   final http.Client _httpClient;
 
-  Future<List<Product>> getProducts() async {
+  Future<List<Product>> getPromotedProducts() async {
     final request = Uri.https(
       _baseUrl,
       '/v1/products(onSale=true)',
@@ -29,7 +28,7 @@ class BestBuyApiClient {
     final response = await _httpClient.get(request);
 
     if (response.statusCode != HttpStatus.ok) {
-      throw GetProductsRequestFailure();
+      throw Exception('Failed to load products');
     }
 
     final productsJson = jsonDecode(response.body)['products'] as List<dynamic>;

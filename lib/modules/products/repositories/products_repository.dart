@@ -1,15 +1,13 @@
-import 'package:meta/meta.dart';
-
 import 'package:best_buy_api/best_buy_api.dart';
 
 class ProductsRepository {
   ProductsRepository({
-    @required this.client,
-  });
+    BestBuyApiClient client,
+  }) : _client = client ?? BestBuyApiClient();
 
-  final BestBuyApiClient client;
+  final BestBuyApiClient _client;
 
   Future<List<Product>> getProducts() async {
-    return client.getProducts();
+    return _client.getPromotedProducts();
   }
 }
