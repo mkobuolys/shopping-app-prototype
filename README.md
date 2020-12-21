@@ -1,16 +1,21 @@
-# shopping_app_prototype
+# Flutter Shopping App prototype
 
-A new Flutter project.
+An open-source Shopping Application prototype built with Dart and Flutter.
 
-## Getting Started
+## Building
 
-This project is a starting point for a Flutter application.
+You can follow these instructions to build the app and install it onto your device.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+If you are new to Flutter, please first follow the [Flutter Setup](https://flutter.dev/setup/) guide.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Building and installing the Flutter Design Patterns app
+
+```
+git clone https://github.com/mkobuolys/shopping-app-prototype.git
+cd shopping-app-prototype
+flutter run
+```
+
+The `flutter run` command both builds and installs the Flutter app to your device or emulator.
