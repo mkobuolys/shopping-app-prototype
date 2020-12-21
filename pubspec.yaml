@@ -12,6 +12,8 @@ dependencies:
   flutter_bloc: ^6.1.1
   freezed_annotation: ^0.12.0
   pedantic: ^1.9.2
+  best_buy_api:
+    path: packages/best_buy_api
 
 dev_dependencies:
   flutter_test:
