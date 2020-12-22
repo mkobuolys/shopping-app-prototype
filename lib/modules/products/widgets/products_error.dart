@@ -20,8 +20,9 @@ class ProductsError extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             color: Colors.black,
-            onPressed: () =>
-                context.read<ProductsBloc>().add(ProductsLoadStarted()),
+            onPressed: () => context
+                .read<ProductsBloc>()
+                .add(ProductsLoadStarted(isRefresh: true)),
           )
         ],
       ),

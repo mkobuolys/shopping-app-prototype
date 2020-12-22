@@ -35,19 +35,27 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         loadStarted: _mapLoadStartedToState,
       );
 
-  Stream<ProductsState> _mapLoadStartedToState(_) async* {
+  Stream<ProductsState> _mapLoadStartedToState(
+    ProductsLoadStarted event,
+  ) async* {
+    if (event.isRefresh) {
+      yield ProductsState.initial();
+    }
+
     final loadedProducts = state.maybeWhen<BuiltList<Product>>(
       loadSuccess: (products, _) => products,
       orElse: () => BuiltList<Product>(),
     );
+    final from = event.isRefresh ? 0 : loadedProducts.length;
 
     try {
-      final productsData =
-          await repository.getProductsData(loadedProducts.length);
+      final productsData = await repository.getProductsData(from);
+      final products = event.isRefresh
+          ? BuiltList<Product>(productsData.products)
+          : loadedProducts.rebuild((b) => b.addAll(productsData.products));
 
       yield ProductsState.loadSuccess(
-        products:
-            loadedProducts.rebuild((b) => b.addAll(productsData.products)),
+        products: products,
         total: productsData.total,
       );
     } catch (_) {

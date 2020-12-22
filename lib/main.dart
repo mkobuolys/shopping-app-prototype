@@ -29,7 +29,7 @@ class App extends StatelessWidget {
     return BlocProvider(
       create: (_) => ProductsBloc(
         repository: repository,
-      )..add(ProductsEvent.loadStarted()),
+      )..add(ProductsLoadStarted(isRefresh: true)),
       child: MaterialApp(
         title: 'Shopping App prototype',
         theme: theme,

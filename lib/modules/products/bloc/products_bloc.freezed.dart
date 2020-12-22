@@ -420,8 +420,10 @@ class _$ProductsEventTearOff {
   const _$ProductsEventTearOff();
 
 // ignore: unused_element
-  ProductsLoadStarted loadStarted() {
-    return const ProductsLoadStarted();
+  ProductsLoadStarted loadStarted({bool isRefresh = false}) {
+    return ProductsLoadStarted(
+      isRefresh: isRefresh,
+    );
   }
 }
 
@@ -431,13 +433,15 @@ const $ProductsEvent = _$ProductsEventTearOff();
 
 /// @nodoc
 mixin _$ProductsEvent {
+  bool get isRefresh;
+
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult loadStarted(),
+    @required TResult loadStarted(bool isRefresh),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult loadStarted(),
+    TResult loadStarted(bool isRefresh),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -449,6 +453,8 @@ mixin _$ProductsEvent {
     TResult loadStarted(ProductsLoadStarted value),
     @required TResult orElse(),
   });
+
+  $ProductsEventCopyWith<ProductsEvent> get copyWith;
 }
 
 /// @nodoc
@@ -456,6 +462,7 @@ abstract class $ProductsEventCopyWith<$Res> {
   factory $ProductsEventCopyWith(
           ProductsEvent value, $Res Function(ProductsEvent) then) =
       _$ProductsEventCopyWithImpl<$Res>;
+  $Res call({bool isRefresh});
 }
 
 /// @nodoc
@@ -466,13 +473,25 @@ class _$ProductsEventCopyWithImpl<$Res>
   final ProductsEvent _value;
   // ignore: unused_field
   final $Res Function(ProductsEvent) _then;
+
+  @override
+  $Res call({
+    Object isRefresh = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isRefresh: isRefresh == freezed ? _value.isRefresh : isRefresh as bool,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class $ProductsLoadStartedCopyWith<$Res> {
+abstract class $ProductsLoadStartedCopyWith<$Res>
+    implements $ProductsEventCopyWith<$Res> {
   factory $ProductsLoadStartedCopyWith(
           ProductsLoadStarted value, $Res Function(ProductsLoadStarted) then) =
       _$ProductsLoadStartedCopyWithImpl<$Res>;
+  @override
+  $Res call({bool isRefresh});
 }
 
 /// @nodoc
@@ -485,43 +504,66 @@ class _$ProductsLoadStartedCopyWithImpl<$Res>
 
   @override
   ProductsLoadStarted get _value => super._value as ProductsLoadStarted;
+
+  @override
+  $Res call({
+    Object isRefresh = freezed,
+  }) {
+    return _then(ProductsLoadStarted(
+      isRefresh: isRefresh == freezed ? _value.isRefresh : isRefresh as bool,
+    ));
+  }
 }
 
 /// @nodoc
 class _$ProductsLoadStarted implements ProductsLoadStarted {
-  const _$ProductsLoadStarted();
+  const _$ProductsLoadStarted({this.isRefresh = false})
+      : assert(isRefresh != null);
+
+  @JsonKey(defaultValue: false)
+  @override
+  final bool isRefresh;
 
   @override
   String toString() {
-    return 'ProductsEvent.loadStarted()';
+    return 'ProductsEvent.loadStarted(isRefresh: $isRefresh)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ProductsLoadStarted);
+    return identical(this, other) ||
+        (other is ProductsLoadStarted &&
+            (identical(other.isRefresh, isRefresh) ||
+                const DeepCollectionEquality()
+                    .equals(other.isRefresh, isRefresh)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isRefresh);
+
+  @override
+  $ProductsLoadStartedCopyWith<ProductsLoadStarted> get copyWith =>
+      _$ProductsLoadStartedCopyWithImpl<ProductsLoadStarted>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult loadStarted(),
+    @required TResult loadStarted(bool isRefresh),
   }) {
     assert(loadStarted != null);
-    return loadStarted();
+    return loadStarted(isRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult loadStarted(),
+    TResult loadStarted(bool isRefresh),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadStarted != null) {
-      return loadStarted();
+      return loadStarted(isRefresh);
     }
     return orElse();
   }
@@ -550,5 +592,10 @@ class _$ProductsLoadStarted implements ProductsLoadStarted {
 }
 
 abstract class ProductsLoadStarted implements ProductsEvent {
-  const factory ProductsLoadStarted() = _$ProductsLoadStarted;
+  const factory ProductsLoadStarted({bool isRefresh}) = _$ProductsLoadStarted;
+
+  @override
+  bool get isRefresh;
+  @override
+  $ProductsLoadStartedCopyWith<ProductsLoadStarted> get copyWith;
 }

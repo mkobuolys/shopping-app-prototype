@@ -41,6 +41,10 @@ class _ProductsListViewState extends State<ProductsListView> {
     super.dispose();
   }
 
+  Future<void> _onRefresh() async {
+    _productsBloc.add(ProductsLoadStarted(isRefresh: true));
+  }
+
   void _onScroll() {
     if (_scrollController.hasClients && _shouldLoadMoreProducts) {
       final maxScrollExtent = _scrollController.position.maxScrollExtent;
@@ -54,12 +58,17 @@ class _ProductsListViewState extends State<ProductsListView> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: _shouldLoadMoreProducts ? _productsCount + 1 : _productsCount,
-      itemBuilder: (_, i) => i >= _productsCount
-          ? CircularLoader()
-          : ProductCard(product: widget.products[i]),
+    return RefreshIndicator(
+      onRefresh: _onRefresh,
+      color: Colors.black,
+      child: ListView.builder(
+        controller: _scrollController,
+        itemCount:
+            _shouldLoadMoreProducts ? _productsCount + 1 : _productsCount,
+        itemBuilder: (_, i) => i >= _productsCount
+            ? CircularLoader()
+            : ProductCard(product: widget.products[i]),
+      ),
     );
   }
 }
