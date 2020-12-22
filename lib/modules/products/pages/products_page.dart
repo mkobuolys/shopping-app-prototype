@@ -22,7 +22,7 @@ class ProductsPage extends StatelessWidget {
       ),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         builder: (context, state) => state.map<Widget>(
-          loadInProgress: (_) => ProductsLoading(),
+          initial: (_) => ProductsLoading(),
           loadSuccess: (ProductsLoadSuccess productsLoadSuccessState) =>
               ProductsListView(products: productsLoadSuccessState.products),
           loadFailure: (_) => ProductsError(),

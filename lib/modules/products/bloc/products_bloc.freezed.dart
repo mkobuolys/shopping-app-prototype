@@ -14,8 +14,8 @@ class _$ProductsStateTearOff {
   const _$ProductsStateTearOff();
 
 // ignore: unused_element
-  ProductsLoadInProgress loadInProgress() {
-    return const ProductsLoadInProgress();
+  ProductsInitial initial() {
+    return const ProductsInitial();
   }
 
 // ignore: unused_element
@@ -39,26 +39,26 @@ const $ProductsState = _$ProductsStateTearOff();
 mixin _$ProductsState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult loadInProgress(),
+    @required TResult initial(),
     @required TResult loadSuccess(List<Product> products),
     @required TResult loadFailure(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult loadInProgress(),
+    TResult initial(),
     TResult loadSuccess(List<Product> products),
     TResult loadFailure(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult loadInProgress(ProductsLoadInProgress value),
+    @required TResult initial(ProductsInitial value),
     @required TResult loadSuccess(ProductsLoadSuccess value),
     @required TResult loadFailure(ProductsLoadFailure value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult loadInProgress(ProductsLoadInProgress value),
+    TResult initial(ProductsInitial value),
     TResult loadSuccess(ProductsLoadSuccess value),
     TResult loadFailure(ProductsLoadFailure value),
     @required TResult orElse(),
@@ -83,36 +83,36 @@ class _$ProductsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $ProductsLoadInProgressCopyWith<$Res> {
-  factory $ProductsLoadInProgressCopyWith(ProductsLoadInProgress value,
-          $Res Function(ProductsLoadInProgress) then) =
-      _$ProductsLoadInProgressCopyWithImpl<$Res>;
+abstract class $ProductsInitialCopyWith<$Res> {
+  factory $ProductsInitialCopyWith(
+          ProductsInitial value, $Res Function(ProductsInitial) then) =
+      _$ProductsInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ProductsLoadInProgressCopyWithImpl<$Res>
+class _$ProductsInitialCopyWithImpl<$Res>
     extends _$ProductsStateCopyWithImpl<$Res>
-    implements $ProductsLoadInProgressCopyWith<$Res> {
-  _$ProductsLoadInProgressCopyWithImpl(ProductsLoadInProgress _value,
-      $Res Function(ProductsLoadInProgress) _then)
-      : super(_value, (v) => _then(v as ProductsLoadInProgress));
+    implements $ProductsInitialCopyWith<$Res> {
+  _$ProductsInitialCopyWithImpl(
+      ProductsInitial _value, $Res Function(ProductsInitial) _then)
+      : super(_value, (v) => _then(v as ProductsInitial));
 
   @override
-  ProductsLoadInProgress get _value => super._value as ProductsLoadInProgress;
+  ProductsInitial get _value => super._value as ProductsInitial;
 }
 
 /// @nodoc
-class _$ProductsLoadInProgress implements ProductsLoadInProgress {
-  const _$ProductsLoadInProgress();
+class _$ProductsInitial implements ProductsInitial {
+  const _$ProductsInitial();
 
   @override
   String toString() {
-    return 'ProductsState.loadInProgress()';
+    return 'ProductsState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ProductsLoadInProgress);
+    return identical(this, other) || (other is ProductsInitial);
   }
 
   @override
@@ -121,27 +121,27 @@ class _$ProductsLoadInProgress implements ProductsLoadInProgress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult loadInProgress(),
+    @required TResult initial(),
     @required TResult loadSuccess(List<Product> products),
     @required TResult loadFailure(),
   }) {
-    assert(loadInProgress != null);
+    assert(initial != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return loadInProgress();
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult loadInProgress(),
+    TResult initial(),
     TResult loadSuccess(List<Product> products),
     TResult loadFailure(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (loadInProgress != null) {
-      return loadInProgress();
+    if (initial != null) {
+      return initial();
     }
     return orElse();
   }
@@ -149,34 +149,34 @@ class _$ProductsLoadInProgress implements ProductsLoadInProgress {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult loadInProgress(ProductsLoadInProgress value),
+    @required TResult initial(ProductsInitial value),
     @required TResult loadSuccess(ProductsLoadSuccess value),
     @required TResult loadFailure(ProductsLoadFailure value),
   }) {
-    assert(loadInProgress != null);
+    assert(initial != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return loadInProgress(this);
+    return initial(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult loadInProgress(ProductsLoadInProgress value),
+    TResult initial(ProductsInitial value),
     TResult loadSuccess(ProductsLoadSuccess value),
     TResult loadFailure(ProductsLoadFailure value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (loadInProgress != null) {
-      return loadInProgress(this);
+    if (initial != null) {
+      return initial(this);
     }
     return orElse();
   }
 }
 
-abstract class ProductsLoadInProgress implements ProductsState {
-  const factory ProductsLoadInProgress() = _$ProductsLoadInProgress;
+abstract class ProductsInitial implements ProductsState {
+  const factory ProductsInitial() = _$ProductsInitial;
 }
 
 /// @nodoc
@@ -242,11 +242,11 @@ class _$ProductsLoadSuccess implements ProductsLoadSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult loadInProgress(),
+    @required TResult initial(),
     @required TResult loadSuccess(List<Product> products),
     @required TResult loadFailure(),
   }) {
-    assert(loadInProgress != null);
+    assert(initial != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return loadSuccess(products);
@@ -255,7 +255,7 @@ class _$ProductsLoadSuccess implements ProductsLoadSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult loadInProgress(),
+    TResult initial(),
     TResult loadSuccess(List<Product> products),
     TResult loadFailure(),
     @required TResult orElse(),
@@ -270,11 +270,11 @@ class _$ProductsLoadSuccess implements ProductsLoadSuccess {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult loadInProgress(ProductsLoadInProgress value),
+    @required TResult initial(ProductsInitial value),
     @required TResult loadSuccess(ProductsLoadSuccess value),
     @required TResult loadFailure(ProductsLoadFailure value),
   }) {
-    assert(loadInProgress != null);
+    assert(initial != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return loadSuccess(this);
@@ -283,7 +283,7 @@ class _$ProductsLoadSuccess implements ProductsLoadSuccess {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult loadInProgress(ProductsLoadInProgress value),
+    TResult initial(ProductsInitial value),
     TResult loadSuccess(ProductsLoadSuccess value),
     TResult loadFailure(ProductsLoadFailure value),
     @required TResult orElse(),
@@ -343,11 +343,11 @@ class _$ProductsLoadFailure implements ProductsLoadFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult loadInProgress(),
+    @required TResult initial(),
     @required TResult loadSuccess(List<Product> products),
     @required TResult loadFailure(),
   }) {
-    assert(loadInProgress != null);
+    assert(initial != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return loadFailure();
@@ -356,7 +356,7 @@ class _$ProductsLoadFailure implements ProductsLoadFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult loadInProgress(),
+    TResult initial(),
     TResult loadSuccess(List<Product> products),
     TResult loadFailure(),
     @required TResult orElse(),
@@ -371,11 +371,11 @@ class _$ProductsLoadFailure implements ProductsLoadFailure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult loadInProgress(ProductsLoadInProgress value),
+    @required TResult initial(ProductsInitial value),
     @required TResult loadSuccess(ProductsLoadSuccess value),
     @required TResult loadFailure(ProductsLoadFailure value),
   }) {
-    assert(loadInProgress != null);
+    assert(initial != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
     return loadFailure(this);
@@ -384,7 +384,7 @@ class _$ProductsLoadFailure implements ProductsLoadFailure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult loadInProgress(ProductsLoadInProgress value),
+    TResult initial(ProductsInitial value),
     TResult loadSuccess(ProductsLoadSuccess value),
     TResult loadFailure(ProductsLoadFailure value),
     @required TResult orElse(),

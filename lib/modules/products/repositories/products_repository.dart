@@ -5,9 +5,14 @@ class ProductsRepository {
     BestBuyApiClient client,
   }) : _client = client ?? BestBuyApiClient();
 
+  static const _defaultLimit = 20;
+
   final BestBuyApiClient _client;
 
-  Future<List<Product>> getProducts() async {
-    return _client.getPromotedProducts();
+  Future<List<Product>> getProducts(int from,
+      [int limit = _defaultLimit]) async {
+    final page = from ~/ limit + 1;
+
+    return _client.getPromotedProducts(page, limit);
   }
 }

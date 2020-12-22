@@ -20,16 +20,18 @@ class _$ProductTearOff {
   _Product call(
       {@required int sku,
       @required String name,
+      @required String image,
       @required double regularPrice,
       @required double salePrice,
-      @required String image,
+      @required bool onSale,
       String shortDescription}) {
     return _Product(
       sku: sku,
       name: name,
+      image: image,
       regularPrice: regularPrice,
       salePrice: salePrice,
-      image: image,
+      onSale: onSale,
       shortDescription: shortDescription,
     );
   }
@@ -48,9 +50,10 @@ const $Product = _$ProductTearOff();
 mixin _$Product {
   int get sku;
   String get name;
+  String get image;
   double get regularPrice;
   double get salePrice;
-  String get image;
+  bool get onSale;
   String get shortDescription;
 
   Map<String, dynamic> toJson();
@@ -64,9 +67,10 @@ abstract class $ProductCopyWith<$Res> {
   $Res call(
       {int sku,
       String name,
+      String image,
       double regularPrice,
       double salePrice,
-      String image,
+      bool onSale,
       String shortDescription});
 }
 
@@ -82,19 +86,21 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
   $Res call({
     Object sku = freezed,
     Object name = freezed,
+    Object image = freezed,
     Object regularPrice = freezed,
     Object salePrice = freezed,
-    Object image = freezed,
+    Object onSale = freezed,
     Object shortDescription = freezed,
   }) {
     return _then(_value.copyWith(
       sku: sku == freezed ? _value.sku : sku as int,
       name: name == freezed ? _value.name : name as String,
+      image: image == freezed ? _value.image : image as String,
       regularPrice: regularPrice == freezed
           ? _value.regularPrice
           : regularPrice as double,
       salePrice: salePrice == freezed ? _value.salePrice : salePrice as double,
-      image: image == freezed ? _value.image : image as String,
+      onSale: onSale == freezed ? _value.onSale : onSale as bool,
       shortDescription: shortDescription == freezed
           ? _value.shortDescription
           : shortDescription as String,
@@ -110,9 +116,10 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   $Res call(
       {int sku,
       String name,
+      String image,
       double regularPrice,
       double salePrice,
-      String image,
+      bool onSale,
       String shortDescription});
 }
 
@@ -129,19 +136,21 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   $Res call({
     Object sku = freezed,
     Object name = freezed,
+    Object image = freezed,
     Object regularPrice = freezed,
     Object salePrice = freezed,
-    Object image = freezed,
+    Object onSale = freezed,
     Object shortDescription = freezed,
   }) {
     return _then(_Product(
       sku: sku == freezed ? _value.sku : sku as int,
       name: name == freezed ? _value.name : name as String,
+      image: image == freezed ? _value.image : image as String,
       regularPrice: regularPrice == freezed
           ? _value.regularPrice
           : regularPrice as double,
       salePrice: salePrice == freezed ? _value.salePrice : salePrice as double,
-      image: image == freezed ? _value.image : image as String,
+      onSale: onSale == freezed ? _value.onSale : onSale as bool,
       shortDescription: shortDescription == freezed
           ? _value.shortDescription
           : shortDescription as String,
@@ -156,15 +165,17 @@ class _$_Product implements _Product {
   const _$_Product(
       {@required this.sku,
       @required this.name,
+      @required this.image,
       @required this.regularPrice,
       @required this.salePrice,
-      @required this.image,
+      @required this.onSale,
       this.shortDescription})
       : assert(sku != null),
         assert(name != null),
+        assert(image != null),
         assert(regularPrice != null),
         assert(salePrice != null),
-        assert(image != null);
+        assert(onSale != null);
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductFromJson(json);
@@ -174,17 +185,19 @@ class _$_Product implements _Product {
   @override
   final String name;
   @override
+  final String image;
+  @override
   final double regularPrice;
   @override
   final double salePrice;
   @override
-  final String image;
+  final bool onSale;
   @override
   final String shortDescription;
 
   @override
   String toString() {
-    return 'Product(sku: $sku, name: $name, regularPrice: $regularPrice, salePrice: $salePrice, image: $image, shortDescription: $shortDescription)';
+    return 'Product(sku: $sku, name: $name, image: $image, regularPrice: $regularPrice, salePrice: $salePrice, onSale: $onSale, shortDescription: $shortDescription)';
   }
 
   @override
@@ -195,14 +208,16 @@ class _$_Product implements _Product {
                 const DeepCollectionEquality().equals(other.sku, sku)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.image, image) ||
+                const DeepCollectionEquality().equals(other.image, image)) &&
             (identical(other.regularPrice, regularPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.regularPrice, regularPrice)) &&
             (identical(other.salePrice, salePrice) ||
                 const DeepCollectionEquality()
                     .equals(other.salePrice, salePrice)) &&
-            (identical(other.image, image) ||
-                const DeepCollectionEquality().equals(other.image, image)) &&
+            (identical(other.onSale, onSale) ||
+                const DeepCollectionEquality().equals(other.onSale, onSale)) &&
             (identical(other.shortDescription, shortDescription) ||
                 const DeepCollectionEquality()
                     .equals(other.shortDescription, shortDescription)));
@@ -213,9 +228,10 @@ class _$_Product implements _Product {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(sku) ^
       const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(image) ^
       const DeepCollectionEquality().hash(regularPrice) ^
       const DeepCollectionEquality().hash(salePrice) ^
-      const DeepCollectionEquality().hash(image) ^
+      const DeepCollectionEquality().hash(onSale) ^
       const DeepCollectionEquality().hash(shortDescription);
 
   @override
@@ -232,9 +248,10 @@ abstract class _Product implements Product {
   const factory _Product(
       {@required int sku,
       @required String name,
+      @required String image,
       @required double regularPrice,
       @required double salePrice,
-      @required String image,
+      @required bool onSale,
       String shortDescription}) = _$_Product;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
@@ -244,11 +261,13 @@ abstract class _Product implements Product {
   @override
   String get name;
   @override
+  String get image;
+  @override
   double get regularPrice;
   @override
   double get salePrice;
   @override
-  String get image;
+  bool get onSale;
   @override
   String get shortDescription;
   @override

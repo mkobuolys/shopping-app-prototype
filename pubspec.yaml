@@ -16,6 +16,7 @@ dependencies:
   freezed_annotation: ^0.12.0
   path_provider: ^1.6.24
   pedantic: ^1.9.2
+  rxdart: ^0.25.0
 
 dev_dependencies:
   flutter_test:

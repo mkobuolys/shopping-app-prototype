@@ -13,17 +13,24 @@ class BestBuyApiClient {
 
   static const _baseUrl = 'api.bestbuy.com';
   static const _defaultParameters = <String, String>{
-    'apiKey': String.fromEnvironment('BEST_BUY_API_KEY'),
+    'apiKey': String.fromEnvironment(
+      'BEST_BUY_API_KEY',
+      defaultValue: '<ENTER YOUR BEST BUY API KEY HERE>',
+    ),
     'format': 'json'
   };
 
   final http.Client _httpClient;
 
-  Future<List<Product>> getPromotedProducts() async {
+  Future<List<Product>> getPromotedProducts(int page, int pageSize) async {
     final request = Uri.https(
       _baseUrl,
       '/v1/products(onSale=true)',
-      _defaultParameters,
+      {
+        ..._defaultParameters,
+        'page': '$page',
+        'pageSize': '$pageSize',
+      },
     );
     final response = await _httpClient.get(request);
 

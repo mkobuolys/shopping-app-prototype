@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:best_buy_api/best_buy_api.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'package:shopping_app_prototype/modules/products/widgets/product_price.dart';
+import 'package:shopping_app_prototype/widgets/widgets.dart';
+
 class ProductCard extends StatelessWidget {
   const ProductCard({
     @required this.product,
@@ -24,9 +27,7 @@ class ProductCard extends StatelessWidget {
                 aspectRatio: 1.0,
                 child: CachedNetworkImage(
                   imageUrl: product.image,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      CircularProgressIndicator(
-                          value: downloadProgress.progress),
+                  placeholder: (_, __) => CircularLoader(),
                   errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -43,9 +44,10 @@ class ProductCard extends StatelessWidget {
                     maxLines: 2,
                   ),
                   const SizedBox(height: 8.0),
-                  Text(
-                    '\$${product.salePrice}',
-                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ProductPrice(
+                    onSale: product.onSale,
+                    regularPrice: product.regularPrice,
+                    salePrice: product.salePrice,
                   ),
                 ],
               ),
