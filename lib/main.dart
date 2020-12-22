@@ -34,7 +34,6 @@ class App extends StatelessWidget {
         title: 'Shopping App prototype',
         theme: theme,
         onGenerateRoute: AppRouter.generateRoute,
-        initialRoute: ProductsPage.route,
         debugShowCheckedModeBanner: false,
       ),
     );

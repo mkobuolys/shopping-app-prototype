@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:best_buy_api/best_buy_api.dart';
+import 'package:shopping_app_prototype/modules/products/widgets/products_list/product_card.dart';
 
 class ProductsListView extends StatelessWidget {
   const ProductsListView({
@@ -11,8 +12,9 @@ class ProductsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: products.map((product) => Text(product.name)).toList(),
+    return ListView.builder(
+      itemBuilder: (_, i) => ProductCard(product: products[i]),
+      itemCount: products.length,
     );
   }
 }

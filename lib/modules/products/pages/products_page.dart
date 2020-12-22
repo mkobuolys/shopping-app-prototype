@@ -11,6 +11,15 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Promoted products'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () => {},
+          ),
+        ],
+      ),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         builder: (context, state) => state.map<Widget>(
           loadInProgress: (_) => ProductsLoading(),
