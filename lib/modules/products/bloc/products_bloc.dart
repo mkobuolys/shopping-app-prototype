@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
 
 import 'package:best_buy_api/best_buy_api.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
@@ -35,20 +36,21 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       );
 
   Stream<ProductsState> _mapLoadStartedToState(_) async* {
-    final loadedProducts = state.maybeWhen<List<Product>>(
-      loadSuccess: (products) => products,
-      orElse: () => [],
+    final loadedProducts = state.maybeWhen<BuiltList<Product>>(
+      loadSuccess: (products, _) => products,
+      orElse: () => BuiltList<Product>(),
     );
 
     try {
-      final products = await repository.getProducts(loadedProducts.length);
+      final productsData =
+          await repository.getProductsData(loadedProducts.length);
 
       yield ProductsState.loadSuccess(
-        products: loadedProducts + products,
+        products:
+            loadedProducts.rebuild((b) => b.addAll(productsData.products)),
+        total: productsData.total,
       );
-    } catch (e) {
-      print(e);
-
+    } catch (_) {
       yield ProductsState.loadFailure();
     }
   }

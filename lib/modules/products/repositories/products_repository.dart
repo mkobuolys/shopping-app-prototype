@@ -9,7 +9,7 @@ class ProductsRepository {
 
   final BestBuyApiClient _client;
 
-  Future<List<Product>> getProducts(int from,
+  Future<ProductsResponse> getProductsData(int from,
       [int limit = _defaultLimit]) async {
     final page = from ~/ limit + 1;
 

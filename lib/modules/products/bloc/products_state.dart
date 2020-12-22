@@ -4,7 +4,8 @@ part of 'products_bloc.dart';
 abstract class ProductsState with _$ProductsState {
   const factory ProductsState.initial() = ProductsInitial;
   const factory ProductsState.loadSuccess({
-    @required List<Product> products,
+    @required BuiltList<Product> products,
+    @required int total,
   }) = ProductsLoadSuccess;
   const factory ProductsState.loadFailure() = ProductsLoadFailure;
 }

@@ -19,9 +19,11 @@ class _$ProductsStateTearOff {
   }
 
 // ignore: unused_element
-  ProductsLoadSuccess loadSuccess({@required List<Product> products}) {
+  ProductsLoadSuccess loadSuccess(
+      {@required BuiltList<Product> products, @required int total}) {
     return ProductsLoadSuccess(
       products: products,
+      total: total,
     );
   }
 
@@ -40,13 +42,13 @@ mixin _$ProductsState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<Product> products),
+    @required TResult loadSuccess(BuiltList<Product> products, int total),
     @required TResult loadFailure(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<Product> products),
+    TResult loadSuccess(BuiltList<Product> products, int total),
     TResult loadFailure(),
     @required TResult orElse(),
   });
@@ -122,7 +124,7 @@ class _$ProductsInitial implements ProductsInitial {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<Product> products),
+    @required TResult loadSuccess(BuiltList<Product> products, int total),
     @required TResult loadFailure(),
   }) {
     assert(initial != null);
@@ -135,7 +137,7 @@ class _$ProductsInitial implements ProductsInitial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<Product> products),
+    TResult loadSuccess(BuiltList<Product> products, int total),
     TResult loadFailure(),
     @required TResult orElse(),
   }) {
@@ -184,7 +186,7 @@ abstract class $ProductsLoadSuccessCopyWith<$Res> {
   factory $ProductsLoadSuccessCopyWith(
           ProductsLoadSuccess value, $Res Function(ProductsLoadSuccess) then) =
       _$ProductsLoadSuccessCopyWithImpl<$Res>;
-  $Res call({List<Product> products});
+  $Res call({BuiltList<Product> products, int total});
 }
 
 /// @nodoc
@@ -201,25 +203,31 @@ class _$ProductsLoadSuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object products = freezed,
+    Object total = freezed,
   }) {
     return _then(ProductsLoadSuccess(
-      products:
-          products == freezed ? _value.products : products as List<Product>,
+      products: products == freezed
+          ? _value.products
+          : products as BuiltList<Product>,
+      total: total == freezed ? _value.total : total as int,
     ));
   }
 }
 
 /// @nodoc
 class _$ProductsLoadSuccess implements ProductsLoadSuccess {
-  const _$ProductsLoadSuccess({@required this.products})
-      : assert(products != null);
+  const _$ProductsLoadSuccess({@required this.products, @required this.total})
+      : assert(products != null),
+        assert(total != null);
 
   @override
-  final List<Product> products;
+  final BuiltList<Product> products;
+  @override
+  final int total;
 
   @override
   String toString() {
-    return 'ProductsState.loadSuccess(products: $products)';
+    return 'ProductsState.loadSuccess(products: $products, total: $total)';
   }
 
   @override
@@ -228,12 +236,16 @@ class _$ProductsLoadSuccess implements ProductsLoadSuccess {
         (other is ProductsLoadSuccess &&
             (identical(other.products, products) ||
                 const DeepCollectionEquality()
-                    .equals(other.products, products)));
+                    .equals(other.products, products)) &&
+            (identical(other.total, total) ||
+                const DeepCollectionEquality().equals(other.total, total)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(products);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(products) ^
+      const DeepCollectionEquality().hash(total);
 
   @override
   $ProductsLoadSuccessCopyWith<ProductsLoadSuccess> get copyWith =>
@@ -243,26 +255,26 @@ class _$ProductsLoadSuccess implements ProductsLoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<Product> products),
+    @required TResult loadSuccess(BuiltList<Product> products, int total),
     @required TResult loadFailure(),
   }) {
     assert(initial != null);
     assert(loadSuccess != null);
     assert(loadFailure != null);
-    return loadSuccess(products);
+    return loadSuccess(products, total);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<Product> products),
+    TResult loadSuccess(BuiltList<Product> products, int total),
     TResult loadFailure(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadSuccess != null) {
-      return loadSuccess(products);
+      return loadSuccess(products, total);
     }
     return orElse();
   }
@@ -297,10 +309,12 @@ class _$ProductsLoadSuccess implements ProductsLoadSuccess {
 }
 
 abstract class ProductsLoadSuccess implements ProductsState {
-  const factory ProductsLoadSuccess({@required List<Product> products}) =
-      _$ProductsLoadSuccess;
+  const factory ProductsLoadSuccess(
+      {@required BuiltList<Product> products,
+      @required int total}) = _$ProductsLoadSuccess;
 
-  List<Product> get products;
+  BuiltList<Product> get products;
+  int get total;
   $ProductsLoadSuccessCopyWith<ProductsLoadSuccess> get copyWith;
 }
 
@@ -344,7 +358,7 @@ class _$ProductsLoadFailure implements ProductsLoadFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult loadSuccess(List<Product> products),
+    @required TResult loadSuccess(BuiltList<Product> products, int total),
     @required TResult loadFailure(),
   }) {
     assert(initial != null);
@@ -357,7 +371,7 @@ class _$ProductsLoadFailure implements ProductsLoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult loadSuccess(List<Product> products),
+    TResult loadSuccess(BuiltList<Product> products, int total),
     TResult loadFailure(),
     @required TResult orElse(),
   }) {

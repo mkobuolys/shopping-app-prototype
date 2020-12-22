@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:best_buy_api/best_buy_api.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:shopping_app_prototype/modules/products/bloc/products_bloc.dart';
@@ -10,9 +11,11 @@ import 'package:shopping_app_prototype/widgets/widgets.dart';
 class ProductsListView extends StatefulWidget {
   const ProductsListView({
     @required this.products,
+    @required this.productsTotal,
   });
 
-  final List<Product> products;
+  final BuiltList<Product> products;
+  final int productsTotal;
 
   @override
   _ProductsListViewState createState() => _ProductsListViewState();
@@ -21,6 +24,9 @@ class ProductsListView extends StatefulWidget {
 class _ProductsListViewState extends State<ProductsListView> {
   final ScrollController _scrollController = ScrollController();
   ProductsBloc _productsBloc;
+
+  int get _productsCount => widget.products.length;
+  bool get _shouldLoadMoreProducts => _productsCount < widget.productsTotal;
 
   @override
   void initState() {
@@ -36,7 +42,7 @@ class _ProductsListViewState extends State<ProductsListView> {
   }
 
   void _onScroll() {
-    if (_scrollController.hasClients) {
+    if (_scrollController.hasClients && _shouldLoadMoreProducts) {
       final maxScrollExtent = _scrollController.position.maxScrollExtent;
       final _currentOffset = _scrollController.offset;
 
@@ -50,8 +56,8 @@ class _ProductsListViewState extends State<ProductsListView> {
   Widget build(BuildContext context) {
     return ListView.builder(
       controller: _scrollController,
-      itemCount: widget.products.length + 1,
-      itemBuilder: (_, i) => i >= widget.products.length
+      itemCount: _shouldLoadMoreProducts ? _productsCount + 1 : _productsCount,
+      itemBuilder: (_, i) => i >= _productsCount
           ? CircularLoader()
           : ProductCard(product: widget.products[i]),
     );

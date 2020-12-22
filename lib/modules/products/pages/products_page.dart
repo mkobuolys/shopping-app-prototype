@@ -12,6 +12,7 @@ class ProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Promoted products'),
         actions: [
           IconButton(
@@ -24,7 +25,10 @@ class ProductsPage extends StatelessWidget {
         builder: (context, state) => state.map<Widget>(
           initial: (_) => ProductsLoading(),
           loadSuccess: (ProductsLoadSuccess productsLoadSuccessState) =>
-              ProductsListView(products: productsLoadSuccessState.products),
+              ProductsListView(
+            products: productsLoadSuccessState.products,
+            productsTotal: productsLoadSuccessState.total,
+          ),
           loadFailure: (_) => ProductsError(),
         ),
       ),

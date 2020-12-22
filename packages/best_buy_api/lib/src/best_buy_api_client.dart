@@ -22,7 +22,7 @@ class BestBuyApiClient {
 
   final http.Client _httpClient;
 
-  Future<List<Product>> getPromotedProducts(int page, int pageSize) async {
+  Future<ProductsResponse> getPromotedProducts(int page, int pageSize) async {
     final request = Uri.https(
       _baseUrl,
       '/v1/products(onSale=true)',
@@ -38,10 +38,8 @@ class BestBuyApiClient {
       throw Exception('Failed to load products');
     }
 
-    final productsJson = jsonDecode(response.body)['products'] as List<dynamic>;
+    final productsResponseJson = jsonDecode(response.body);
 
-    return productsJson
-        .map((productJson) => Product.fromJson(productJson))
-        .toList();
+    return ProductsResponse.fromJson(productsResponseJson);
   }
 }
