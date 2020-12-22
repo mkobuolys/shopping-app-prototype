@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:shopping_app_prototype/modules/products/bloc/products_bloc.dart';
 import 'package:shopping_app_prototype/modules/products/widgets/widgets.dart';
+import 'package:shopping_app_prototype/widgets/widgets.dart';
 
 class ProductsPage extends StatelessWidget {
   static const String route = '/products';
@@ -15,10 +16,7 @@ class ProductsPage extends StatelessWidget {
         centerTitle: true,
         title: Text('Promoted products'),
         actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () => {},
-          ),
+          ShoppingCardButton(),
         ],
       ),
       body: BlocBuilder<ProductsBloc, ProductsState>(

@@ -5,7 +5,7 @@ import 'package:built_collection/built_collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:shopping_app_prototype/modules/products/bloc/products_bloc.dart';
-import 'package:shopping_app_prototype/modules/products/widgets/products_list/product_card.dart';
+import 'package:shopping_app_prototype/modules/products/widgets/product_card.dart';
 import 'package:shopping_app_prototype/widgets/widgets.dart';
 
 class ProductsListView extends StatefulWidget {
