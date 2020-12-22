@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:best_buy_api/best_buy_api.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
+import 'package:shopping_app_prototype/constants/constants.dart';
 import 'package:shopping_app_prototype/modules/products/widgets/product_price.dart';
 import 'package:shopping_app_prototype/widgets/widgets.dart';
 
@@ -16,9 +17,9 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(LayoutConstants.kMarginM),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(LayoutConstants.kPaddingM),
         child: Row(
           children: [
             SizedBox(
@@ -32,7 +33,7 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 16.0),
+            const SizedBox(width: LayoutConstants.kSpaceL),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +44,7 @@ class ProductCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: LayoutConstants.kSpaceM),
                   ProductPrice(
                     onSale: product.onSale,
                     regularPrice: product.regularPrice,
