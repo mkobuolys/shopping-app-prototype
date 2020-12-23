@@ -21,7 +21,8 @@ class _$ProductTearOff {
       @required double regularPrice,
       @required double salePrice,
       @required bool onSale,
-      String shortDescription}) {
+      @required String description,
+      double customerReviewAverage}) {
     return _Product(
       sku: sku,
       name: name,
@@ -29,7 +30,8 @@ class _$ProductTearOff {
       regularPrice: regularPrice,
       salePrice: salePrice,
       onSale: onSale,
-      shortDescription: shortDescription,
+      description: description,
+      customerReviewAverage: customerReviewAverage,
     );
   }
 }
@@ -46,7 +48,8 @@ mixin _$Product {
   double get regularPrice;
   double get salePrice;
   bool get onSale;
-  String get shortDescription;
+  String get description;
+  double get customerReviewAverage;
 
   $ProductCopyWith<Product> get copyWith;
 }
@@ -62,7 +65,8 @@ abstract class $ProductCopyWith<$Res> {
       double regularPrice,
       double salePrice,
       bool onSale,
-      String shortDescription});
+      String description,
+      double customerReviewAverage});
 }
 
 /// @nodoc
@@ -81,7 +85,8 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object regularPrice = freezed,
     Object salePrice = freezed,
     Object onSale = freezed,
-    Object shortDescription = freezed,
+    Object description = freezed,
+    Object customerReviewAverage = freezed,
   }) {
     return _then(_value.copyWith(
       sku: sku == freezed ? _value.sku : sku as int,
@@ -92,9 +97,11 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           : regularPrice as double,
       salePrice: salePrice == freezed ? _value.salePrice : salePrice as double,
       onSale: onSale == freezed ? _value.onSale : onSale as bool,
-      shortDescription: shortDescription == freezed
-          ? _value.shortDescription
-          : shortDescription as String,
+      description:
+          description == freezed ? _value.description : description as String,
+      customerReviewAverage: customerReviewAverage == freezed
+          ? _value.customerReviewAverage
+          : customerReviewAverage as double,
     ));
   }
 }
@@ -111,7 +118,8 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       double regularPrice,
       double salePrice,
       bool onSale,
-      String shortDescription});
+      String description,
+      double customerReviewAverage});
 }
 
 /// @nodoc
@@ -131,7 +139,8 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object regularPrice = freezed,
     Object salePrice = freezed,
     Object onSale = freezed,
-    Object shortDescription = freezed,
+    Object description = freezed,
+    Object customerReviewAverage = freezed,
   }) {
     return _then(_Product(
       sku: sku == freezed ? _value.sku : sku as int,
@@ -142,9 +151,11 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           : regularPrice as double,
       salePrice: salePrice == freezed ? _value.salePrice : salePrice as double,
       onSale: onSale == freezed ? _value.onSale : onSale as bool,
-      shortDescription: shortDescription == freezed
-          ? _value.shortDescription
-          : shortDescription as String,
+      description:
+          description == freezed ? _value.description : description as String,
+      customerReviewAverage: customerReviewAverage == freezed
+          ? _value.customerReviewAverage
+          : customerReviewAverage as double,
     ));
   }
 }
@@ -158,13 +169,15 @@ class _$_Product implements _Product {
       @required this.regularPrice,
       @required this.salePrice,
       @required this.onSale,
-      this.shortDescription})
+      @required this.description,
+      this.customerReviewAverage})
       : assert(sku != null),
         assert(name != null),
         assert(image != null),
         assert(regularPrice != null),
         assert(salePrice != null),
-        assert(onSale != null);
+        assert(onSale != null),
+        assert(description != null);
 
   @override
   final int sku;
@@ -179,11 +192,13 @@ class _$_Product implements _Product {
   @override
   final bool onSale;
   @override
-  final String shortDescription;
+  final String description;
+  @override
+  final double customerReviewAverage;
 
   @override
   String toString() {
-    return 'Product(sku: $sku, name: $name, image: $image, regularPrice: $regularPrice, salePrice: $salePrice, onSale: $onSale, shortDescription: $shortDescription)';
+    return 'Product(sku: $sku, name: $name, image: $image, regularPrice: $regularPrice, salePrice: $salePrice, onSale: $onSale, description: $description, customerReviewAverage: $customerReviewAverage)';
   }
 
   @override
@@ -204,9 +219,12 @@ class _$_Product implements _Product {
                     .equals(other.salePrice, salePrice)) &&
             (identical(other.onSale, onSale) ||
                 const DeepCollectionEquality().equals(other.onSale, onSale)) &&
-            (identical(other.shortDescription, shortDescription) ||
+            (identical(other.description, description) ||
                 const DeepCollectionEquality()
-                    .equals(other.shortDescription, shortDescription)));
+                    .equals(other.description, description)) &&
+            (identical(other.customerReviewAverage, customerReviewAverage) ||
+                const DeepCollectionEquality().equals(
+                    other.customerReviewAverage, customerReviewAverage)));
   }
 
   @override
@@ -218,7 +236,8 @@ class _$_Product implements _Product {
       const DeepCollectionEquality().hash(regularPrice) ^
       const DeepCollectionEquality().hash(salePrice) ^
       const DeepCollectionEquality().hash(onSale) ^
-      const DeepCollectionEquality().hash(shortDescription);
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(customerReviewAverage);
 
   @override
   _$ProductCopyWith<_Product> get copyWith =>
@@ -233,7 +252,8 @@ abstract class _Product implements Product {
       @required double regularPrice,
       @required double salePrice,
       @required bool onSale,
-      String shortDescription}) = _$_Product;
+      @required String description,
+      double customerReviewAverage}) = _$_Product;
 
   @override
   int get sku;
@@ -248,7 +268,9 @@ abstract class _Product implements Product {
   @override
   bool get onSale;
   @override
-  String get shortDescription;
+  String get description;
+  @override
+  double get customerReviewAverage;
   @override
   _$ProductCopyWith<_Product> get copyWith;
 }

@@ -12,6 +12,7 @@ abstract class Product with _$Product {
     @required double regularPrice,
     @required double salePrice,
     @required bool onSale,
-    String shortDescription,
+    @required String description,
+    double customerReviewAverage,
   }) = _Product;
 }

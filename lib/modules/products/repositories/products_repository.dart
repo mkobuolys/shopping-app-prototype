@@ -27,6 +27,11 @@ class ProductsRepository {
   }
 
   Product _mapBestBuyProduct(BestBuyProduct product) {
+    final description = (product.shortDescription != null
+            ? '${product.shortDescription}\n\n'
+            : '') +
+        '${product.description ?? product.longDescription ?? product.plot}';
+
     return Product(
       sku: product.sku,
       name: product.name,
@@ -34,6 +39,8 @@ class ProductsRepository {
       regularPrice: product.regularPrice,
       salePrice: product.salePrice,
       onSale: product.onSale,
+      description: description,
+      customerReviewAverage: product.customerReviewAverage,
     );
   }
 }

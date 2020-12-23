@@ -24,7 +24,11 @@ class _$BestBuyProductTearOff {
       @required double regularPrice,
       @required double salePrice,
       @required bool onSale,
-      String shortDescription}) {
+      String shortDescription,
+      String longDescription,
+      String description,
+      String plot,
+      double customerReviewAverage}) {
     return _BestBuyProduct(
       sku: sku,
       name: name,
@@ -33,6 +37,10 @@ class _$BestBuyProductTearOff {
       salePrice: salePrice,
       onSale: onSale,
       shortDescription: shortDescription,
+      longDescription: longDescription,
+      description: description,
+      plot: plot,
+      customerReviewAverage: customerReviewAverage,
     );
   }
 
@@ -55,6 +63,10 @@ mixin _$BestBuyProduct {
   double get salePrice;
   bool get onSale;
   String get shortDescription;
+  String get longDescription;
+  String get description;
+  String get plot;
+  double get customerReviewAverage;
 
   Map<String, dynamic> toJson();
   $BestBuyProductCopyWith<BestBuyProduct> get copyWith;
@@ -72,7 +84,11 @@ abstract class $BestBuyProductCopyWith<$Res> {
       double regularPrice,
       double salePrice,
       bool onSale,
-      String shortDescription});
+      String shortDescription,
+      String longDescription,
+      String description,
+      String plot,
+      double customerReviewAverage});
 }
 
 /// @nodoc
@@ -93,6 +109,10 @@ class _$BestBuyProductCopyWithImpl<$Res>
     Object salePrice = freezed,
     Object onSale = freezed,
     Object shortDescription = freezed,
+    Object longDescription = freezed,
+    Object description = freezed,
+    Object plot = freezed,
+    Object customerReviewAverage = freezed,
   }) {
     return _then(_value.copyWith(
       sku: sku == freezed ? _value.sku : sku as int,
@@ -106,6 +126,15 @@ class _$BestBuyProductCopyWithImpl<$Res>
       shortDescription: shortDescription == freezed
           ? _value.shortDescription
           : shortDescription as String,
+      longDescription: longDescription == freezed
+          ? _value.longDescription
+          : longDescription as String,
+      description:
+          description == freezed ? _value.description : description as String,
+      plot: plot == freezed ? _value.plot : plot as String,
+      customerReviewAverage: customerReviewAverage == freezed
+          ? _value.customerReviewAverage
+          : customerReviewAverage as double,
     ));
   }
 }
@@ -124,7 +153,11 @@ abstract class _$BestBuyProductCopyWith<$Res>
       double regularPrice,
       double salePrice,
       bool onSale,
-      String shortDescription});
+      String shortDescription,
+      String longDescription,
+      String description,
+      String plot,
+      double customerReviewAverage});
 }
 
 /// @nodoc
@@ -147,6 +180,10 @@ class __$BestBuyProductCopyWithImpl<$Res>
     Object salePrice = freezed,
     Object onSale = freezed,
     Object shortDescription = freezed,
+    Object longDescription = freezed,
+    Object description = freezed,
+    Object plot = freezed,
+    Object customerReviewAverage = freezed,
   }) {
     return _then(_BestBuyProduct(
       sku: sku == freezed ? _value.sku : sku as int,
@@ -160,6 +197,15 @@ class __$BestBuyProductCopyWithImpl<$Res>
       shortDescription: shortDescription == freezed
           ? _value.shortDescription
           : shortDescription as String,
+      longDescription: longDescription == freezed
+          ? _value.longDescription
+          : longDescription as String,
+      description:
+          description == freezed ? _value.description : description as String,
+      plot: plot == freezed ? _value.plot : plot as String,
+      customerReviewAverage: customerReviewAverage == freezed
+          ? _value.customerReviewAverage
+          : customerReviewAverage as double,
     ));
   }
 }
@@ -175,7 +221,11 @@ class _$_BestBuyProduct implements _BestBuyProduct {
       @required this.regularPrice,
       @required this.salePrice,
       @required this.onSale,
-      this.shortDescription})
+      this.shortDescription,
+      this.longDescription,
+      this.description,
+      this.plot,
+      this.customerReviewAverage})
       : assert(sku != null),
         assert(name != null),
         assert(image != null),
@@ -200,10 +250,18 @@ class _$_BestBuyProduct implements _BestBuyProduct {
   final bool onSale;
   @override
   final String shortDescription;
+  @override
+  final String longDescription;
+  @override
+  final String description;
+  @override
+  final String plot;
+  @override
+  final double customerReviewAverage;
 
   @override
   String toString() {
-    return 'BestBuyProduct(sku: $sku, name: $name, image: $image, regularPrice: $regularPrice, salePrice: $salePrice, onSale: $onSale, shortDescription: $shortDescription)';
+    return 'BestBuyProduct(sku: $sku, name: $name, image: $image, regularPrice: $regularPrice, salePrice: $salePrice, onSale: $onSale, shortDescription: $shortDescription, longDescription: $longDescription, description: $description, plot: $plot, customerReviewAverage: $customerReviewAverage)';
   }
 
   @override
@@ -226,7 +284,18 @@ class _$_BestBuyProduct implements _BestBuyProduct {
                 const DeepCollectionEquality().equals(other.onSale, onSale)) &&
             (identical(other.shortDescription, shortDescription) ||
                 const DeepCollectionEquality()
-                    .equals(other.shortDescription, shortDescription)));
+                    .equals(other.shortDescription, shortDescription)) &&
+            (identical(other.longDescription, longDescription) ||
+                const DeepCollectionEquality()
+                    .equals(other.longDescription, longDescription)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.plot, plot) ||
+                const DeepCollectionEquality().equals(other.plot, plot)) &&
+            (identical(other.customerReviewAverage, customerReviewAverage) ||
+                const DeepCollectionEquality().equals(
+                    other.customerReviewAverage, customerReviewAverage)));
   }
 
   @override
@@ -238,7 +307,11 @@ class _$_BestBuyProduct implements _BestBuyProduct {
       const DeepCollectionEquality().hash(regularPrice) ^
       const DeepCollectionEquality().hash(salePrice) ^
       const DeepCollectionEquality().hash(onSale) ^
-      const DeepCollectionEquality().hash(shortDescription);
+      const DeepCollectionEquality().hash(shortDescription) ^
+      const DeepCollectionEquality().hash(longDescription) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(plot) ^
+      const DeepCollectionEquality().hash(customerReviewAverage);
 
   @override
   _$BestBuyProductCopyWith<_BestBuyProduct> get copyWith =>
@@ -258,7 +331,11 @@ abstract class _BestBuyProduct implements BestBuyProduct {
       @required double regularPrice,
       @required double salePrice,
       @required bool onSale,
-      String shortDescription}) = _$_BestBuyProduct;
+      String shortDescription,
+      String longDescription,
+      String description,
+      String plot,
+      double customerReviewAverage}) = _$_BestBuyProduct;
 
   factory _BestBuyProduct.fromJson(Map<String, dynamic> json) =
       _$_BestBuyProduct.fromJson;
@@ -277,6 +354,14 @@ abstract class _BestBuyProduct implements BestBuyProduct {
   bool get onSale;
   @override
   String get shortDescription;
+  @override
+  String get longDescription;
+  @override
+  String get description;
+  @override
+  String get plot;
+  @override
+  double get customerReviewAverage;
   @override
   _$BestBuyProductCopyWith<_BestBuyProduct> get copyWith;
 }

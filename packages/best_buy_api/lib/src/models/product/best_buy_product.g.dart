@@ -15,6 +15,10 @@ _$_BestBuyProduct _$_$_BestBuyProductFromJson(Map<String, dynamic> json) {
     salePrice: (json['salePrice'] as num)?.toDouble(),
     onSale: json['onSale'] as bool,
     shortDescription: json['shortDescription'] as String,
+    longDescription: json['longDescription'] as String,
+    description: json['description'] as String,
+    plot: json['plot'] as String,
+    customerReviewAverage: (json['customerReviewAverage'] as num)?.toDouble(),
   );
 }
 
@@ -27,4 +31,8 @@ Map<String, dynamic> _$_$_BestBuyProductToJson(_$_BestBuyProduct instance) =>
       'salePrice': instance.salePrice,
       'onSale': instance.onSale,
       'shortDescription': instance.shortDescription,
+      'longDescription': instance.longDescription,
+      'description': instance.description,
+      'plot': instance.plot,
+      'customerReviewAverage': instance.customerReviewAverage,
     };

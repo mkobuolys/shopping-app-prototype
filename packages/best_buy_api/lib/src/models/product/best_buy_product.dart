@@ -14,6 +14,10 @@ abstract class BestBuyProduct with _$BestBuyProduct {
     @required double salePrice,
     @required bool onSale,
     String shortDescription,
+    String longDescription,
+    String description,
+    String plot,
+    double customerReviewAverage,
   }) = _BestBuyProduct;
 
   factory BestBuyProduct.fromJson(Map<String, dynamic> json) =>

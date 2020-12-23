@@ -4,6 +4,7 @@ final ThemeData theme = ThemeData(
   primarySwatch: Colors.blue,
   visualDensity: VisualDensity.adaptivePlatformDensity,
   appBarTheme: _appBarTheme,
+  scaffoldBackgroundColor: Colors.white.withOpacity(0.95),
   typography: Typography.material2018(),
   textTheme: _textTheme,
 );
