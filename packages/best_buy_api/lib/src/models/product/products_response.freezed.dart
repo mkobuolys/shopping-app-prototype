@@ -18,7 +18,7 @@ class _$ProductsResponseTearOff {
 
 // ignore: unused_element
   _ProductsResponse call(
-      {@required List<Product> products, @required int total}) {
+      {@required List<BestBuyProduct> products, @required int total}) {
     return _ProductsResponse(
       products: products,
       total: total,
@@ -37,7 +37,7 @@ const $ProductsResponse = _$ProductsResponseTearOff();
 
 /// @nodoc
 mixin _$ProductsResponse {
-  List<Product> get products;
+  List<BestBuyProduct> get products;
   int get total;
 
   Map<String, dynamic> toJson();
@@ -49,7 +49,7 @@ abstract class $ProductsResponseCopyWith<$Res> {
   factory $ProductsResponseCopyWith(
           ProductsResponse value, $Res Function(ProductsResponse) then) =
       _$ProductsResponseCopyWithImpl<$Res>;
-  $Res call({List<Product> products, int total});
+  $Res call({List<BestBuyProduct> products, int total});
 }
 
 /// @nodoc
@@ -67,8 +67,9 @@ class _$ProductsResponseCopyWithImpl<$Res>
     Object total = freezed,
   }) {
     return _then(_value.copyWith(
-      products:
-          products == freezed ? _value.products : products as List<Product>,
+      products: products == freezed
+          ? _value.products
+          : products as List<BestBuyProduct>,
       total: total == freezed ? _value.total : total as int,
     ));
   }
@@ -81,7 +82,7 @@ abstract class _$ProductsResponseCopyWith<$Res>
           _ProductsResponse value, $Res Function(_ProductsResponse) then) =
       __$ProductsResponseCopyWithImpl<$Res>;
   @override
-  $Res call({List<Product> products, int total});
+  $Res call({List<BestBuyProduct> products, int total});
 }
 
 /// @nodoc
@@ -101,8 +102,9 @@ class __$ProductsResponseCopyWithImpl<$Res>
     Object total = freezed,
   }) {
     return _then(_ProductsResponse(
-      products:
-          products == freezed ? _value.products : products as List<Product>,
+      products: products == freezed
+          ? _value.products
+          : products as List<BestBuyProduct>,
       total: total == freezed ? _value.total : total as int,
     ));
   }
@@ -120,7 +122,7 @@ class _$_ProductsResponse implements _ProductsResponse {
       _$_$_ProductsResponseFromJson(json);
 
   @override
-  final List<Product> products;
+  final List<BestBuyProduct> products;
   @override
   final int total;
 
@@ -158,14 +160,14 @@ class _$_ProductsResponse implements _ProductsResponse {
 
 abstract class _ProductsResponse implements ProductsResponse {
   const factory _ProductsResponse(
-      {@required List<Product> products,
+      {@required List<BestBuyProduct> products,
       @required int total}) = _$_ProductsResponse;
 
   factory _ProductsResponse.fromJson(Map<String, dynamic> json) =
       _$_ProductsResponse.fromJson;
 
   @override
-  List<Product> get products;
+  List<BestBuyProduct> get products;
   @override
   int get total;
   @override

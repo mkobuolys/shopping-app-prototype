@@ -1,12 +1,11 @@
 import 'package:meta/meta.dart';
 
-import 'package:best_buy_api/best_buy_api.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'package:shopping_app_prototype/modules/products/repositories/products_repository.dart';
+import 'package:shopping_app_prototype/modules/products/products.dart';
 
 part 'products_state.dart';
 part 'products_event.dart';

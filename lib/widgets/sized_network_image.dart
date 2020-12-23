@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'package:shopping_app_prototype/widgets/widgets.dart';
+import 'package:shopping_app_prototype/widgets/circular_loader.dart';
 
 class SizedNetworkImage extends StatelessWidget {
   const SizedNetworkImage({

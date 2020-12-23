@@ -9,8 +9,9 @@ part of 'products_response.dart';
 _$_ProductsResponse _$_$_ProductsResponseFromJson(Map<String, dynamic> json) {
   return _$_ProductsResponse(
     products: (json['products'] as List)
-        ?.map((e) =>
-            e == null ? null : Product.fromJson(e as Map<String, dynamic>))
+        ?.map((e) => e == null
+            ? null
+            : BestBuyProduct.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     total: json['total'] as int,
   );

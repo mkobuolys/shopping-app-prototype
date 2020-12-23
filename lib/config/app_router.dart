@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:best_buy_api/best_buy_api.dart';
-
 import 'package:shopping_app_prototype/modules/modules.dart';
 
 class AppRouter {

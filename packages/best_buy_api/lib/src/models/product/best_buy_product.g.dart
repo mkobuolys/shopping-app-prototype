@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product.dart';
+part of 'best_buy_product.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Product _$_$_ProductFromJson(Map<String, dynamic> json) {
-  return _$_Product(
+_$_BestBuyProduct _$_$_BestBuyProductFromJson(Map<String, dynamic> json) {
+  return _$_BestBuyProduct(
     sku: json['sku'] as int,
     name: json['name'] as String,
     image: json['image'] as String,
@@ -18,7 +18,7 @@ _$_Product _$_$_ProductFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$_$_ProductToJson(_$_Product instance) =>
+Map<String, dynamic> _$_$_BestBuyProductToJson(_$_BestBuyProduct instance) =>
     <String, dynamic>{
       'sku': instance.sku,
       'name': instance.name,

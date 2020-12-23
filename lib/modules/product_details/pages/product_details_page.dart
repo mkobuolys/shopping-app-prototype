@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:best_buy_api/best_buy_api.dart';
-
 import 'package:shopping_app_prototype/constants/constants.dart';
+import 'package:shopping_app_prototype/modules/products/models/product.dart';
 import 'package:shopping_app_prototype/utils/utils.dart';
 import 'package:shopping_app_prototype/widgets/widgets.dart';
 

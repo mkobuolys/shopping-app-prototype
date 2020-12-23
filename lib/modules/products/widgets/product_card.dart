@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:best_buy_api/best_buy_api.dart';
-
 import 'package:shopping_app_prototype/constants/constants.dart';
 import 'package:shopping_app_prototype/modules/product_details/product_details.dart';
-import 'package:shopping_app_prototype/modules/products/widgets/product_price.dart';
+import 'package:shopping_app_prototype/modules/products/models/product.dart';
+import 'package:shopping_app_prototype/modules/products/widgets/widgets.dart';
 import 'package:shopping_app_prototype/widgets/widgets.dart';
 
 class ProductCard extends StatelessWidget {

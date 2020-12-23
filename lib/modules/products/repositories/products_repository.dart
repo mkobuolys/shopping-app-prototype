@@ -1,5 +1,7 @@
 import 'package:best_buy_api/best_buy_api.dart';
 
+import 'package:shopping_app_prototype/modules/products/models/models.dart';
+
 class ProductsRepository {
   ProductsRepository({
     BestBuyApiClient client,
@@ -9,10 +11,29 @@ class ProductsRepository {
 
   final BestBuyApiClient _client;
 
-  Future<ProductsResponse> getProductsData(int from,
+  Future<ProductsData> getProductsData(int from,
       [int limit = _defaultLimit]) async {
     final page = from ~/ limit + 1;
+    final response = await _client.getPromotedProducts(page, limit);
 
-    return _client.getPromotedProducts(page, limit);
+    return _mapProductsResponse(response);
+  }
+
+  ProductsData _mapProductsResponse(ProductsResponse response) {
+    return ProductsData(
+      products: response.products.map(_mapBestBuyProduct).toList(),
+      total: response.total,
+    );
+  }
+
+  Product _mapBestBuyProduct(BestBuyProduct product) {
+    return Product(
+      sku: product.sku,
+      name: product.name,
+      image: product.image,
+      regularPrice: product.regularPrice,
+      salePrice: product.salePrice,
+      onSale: product.onSale,
+    );
   }
 }
