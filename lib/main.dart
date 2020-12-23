@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'package:shopping_app_prototype/config/config.dart';
 import 'package:shopping_app_prototype/modules/products/products.dart';
@@ -12,6 +13,7 @@ Future<void> main() async {
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
+  HydratedBloc.storage = await HydratedStorage.build();
   Bloc.observer = ShoppingAppBlocObserver();
 
   runApp(App(repository: ProductsRepository()));
@@ -29,7 +31,7 @@ class App extends StatelessWidget {
     return BlocProvider(
       create: (_) => ProductsBloc(
         repository: repository,
-      )..add(ProductsLoadStarted(isRefresh: true)),
+      )..add(ProductsInitialLoadStarted()),
       child: MaterialApp(
         title: 'Shopping App prototype',
         theme: theme,

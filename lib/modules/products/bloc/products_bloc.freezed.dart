@@ -420,6 +420,11 @@ class _$ProductsEventTearOff {
   const _$ProductsEventTearOff();
 
 // ignore: unused_element
+  ProductsInitialLoadStarted initialLoadStarted() {
+    return const ProductsInitialLoadStarted();
+  }
+
+// ignore: unused_element
   ProductsLoadStarted loadStarted({bool isRefresh = false}) {
     return ProductsLoadStarted(
       isRefresh: isRefresh,
@@ -433,28 +438,28 @@ const $ProductsEvent = _$ProductsEventTearOff();
 
 /// @nodoc
 mixin _$ProductsEvent {
-  bool get isRefresh;
-
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult initialLoadStarted(),
     @required TResult loadStarted(bool isRefresh),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult initialLoadStarted(),
     TResult loadStarted(bool isRefresh),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult initialLoadStarted(ProductsInitialLoadStarted value),
     @required TResult loadStarted(ProductsLoadStarted value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult initialLoadStarted(ProductsInitialLoadStarted value),
     TResult loadStarted(ProductsLoadStarted value),
     @required TResult orElse(),
   });
-
-  $ProductsEventCopyWith<ProductsEvent> get copyWith;
 }
 
 /// @nodoc
@@ -462,7 +467,6 @@ abstract class $ProductsEventCopyWith<$Res> {
   factory $ProductsEventCopyWith(
           ProductsEvent value, $Res Function(ProductsEvent) then) =
       _$ProductsEventCopyWithImpl<$Res>;
-  $Res call({bool isRefresh});
 }
 
 /// @nodoc
@@ -473,24 +477,105 @@ class _$ProductsEventCopyWithImpl<$Res>
   final ProductsEvent _value;
   // ignore: unused_field
   final $Res Function(ProductsEvent) _then;
-
-  @override
-  $Res call({
-    Object isRefresh = freezed,
-  }) {
-    return _then(_value.copyWith(
-      isRefresh: isRefresh == freezed ? _value.isRefresh : isRefresh as bool,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class $ProductsLoadStartedCopyWith<$Res>
-    implements $ProductsEventCopyWith<$Res> {
+abstract class $ProductsInitialLoadStartedCopyWith<$Res> {
+  factory $ProductsInitialLoadStartedCopyWith(ProductsInitialLoadStarted value,
+          $Res Function(ProductsInitialLoadStarted) then) =
+      _$ProductsInitialLoadStartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ProductsInitialLoadStartedCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res>
+    implements $ProductsInitialLoadStartedCopyWith<$Res> {
+  _$ProductsInitialLoadStartedCopyWithImpl(ProductsInitialLoadStarted _value,
+      $Res Function(ProductsInitialLoadStarted) _then)
+      : super(_value, (v) => _then(v as ProductsInitialLoadStarted));
+
+  @override
+  ProductsInitialLoadStarted get _value =>
+      super._value as ProductsInitialLoadStarted;
+}
+
+/// @nodoc
+class _$ProductsInitialLoadStarted implements ProductsInitialLoadStarted {
+  const _$ProductsInitialLoadStarted();
+
+  @override
+  String toString() {
+    return 'ProductsEvent.initialLoadStarted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ProductsInitialLoadStarted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialLoadStarted(),
+    @required TResult loadStarted(bool isRefresh),
+  }) {
+    assert(initialLoadStarted != null);
+    assert(loadStarted != null);
+    return initialLoadStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialLoadStarted(),
+    TResult loadStarted(bool isRefresh),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialLoadStarted != null) {
+      return initialLoadStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialLoadStarted(ProductsInitialLoadStarted value),
+    @required TResult loadStarted(ProductsLoadStarted value),
+  }) {
+    assert(initialLoadStarted != null);
+    assert(loadStarted != null);
+    return initialLoadStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialLoadStarted(ProductsInitialLoadStarted value),
+    TResult loadStarted(ProductsLoadStarted value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialLoadStarted != null) {
+      return initialLoadStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ProductsInitialLoadStarted implements ProductsEvent {
+  const factory ProductsInitialLoadStarted() = _$ProductsInitialLoadStarted;
+}
+
+/// @nodoc
+abstract class $ProductsLoadStartedCopyWith<$Res> {
   factory $ProductsLoadStartedCopyWith(
           ProductsLoadStarted value, $Res Function(ProductsLoadStarted) then) =
       _$ProductsLoadStartedCopyWithImpl<$Res>;
-  @override
   $Res call({bool isRefresh});
 }
 
@@ -549,8 +634,10 @@ class _$ProductsLoadStarted implements ProductsLoadStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
+    @required TResult initialLoadStarted(),
     @required TResult loadStarted(bool isRefresh),
   }) {
+    assert(initialLoadStarted != null);
     assert(loadStarted != null);
     return loadStarted(isRefresh);
   }
@@ -558,6 +645,7 @@ class _$ProductsLoadStarted implements ProductsLoadStarted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
+    TResult initialLoadStarted(),
     TResult loadStarted(bool isRefresh),
     @required TResult orElse(),
   }) {
@@ -571,8 +659,10 @@ class _$ProductsLoadStarted implements ProductsLoadStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
+    @required TResult initialLoadStarted(ProductsInitialLoadStarted value),
     @required TResult loadStarted(ProductsLoadStarted value),
   }) {
+    assert(initialLoadStarted != null);
     assert(loadStarted != null);
     return loadStarted(this);
   }
@@ -580,6 +670,7 @@ class _$ProductsLoadStarted implements ProductsLoadStarted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
+    TResult initialLoadStarted(ProductsInitialLoadStarted value),
     TResult loadStarted(ProductsLoadStarted value),
     @required TResult orElse(),
   }) {
@@ -594,8 +685,6 @@ class _$ProductsLoadStarted implements ProductsLoadStarted {
 abstract class ProductsLoadStarted implements ProductsEvent {
   const factory ProductsLoadStarted({bool isRefresh}) = _$ProductsLoadStarted;
 
-  @override
   bool get isRefresh;
-  @override
   $ProductsLoadStartedCopyWith<ProductsLoadStarted> get copyWith;
 }

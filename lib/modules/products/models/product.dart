@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 
 part 'product.freezed.dart';
+part 'product.g.dart';
 
 @freezed
 abstract class Product with _$Product {
@@ -15,4 +16,7 @@ abstract class Product with _$Product {
     @required String description,
     double customerReviewAverage,
   }) = _Product;
+
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 }

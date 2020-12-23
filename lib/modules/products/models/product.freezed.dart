@@ -8,6 +8,9 @@ part of 'product.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+Product _$ProductFromJson(Map<String, dynamic> json) {
+  return _Product.fromJson(json);
+}
 
 /// @nodoc
 class _$ProductTearOff {
@@ -34,6 +37,11 @@ class _$ProductTearOff {
       customerReviewAverage: customerReviewAverage,
     );
   }
+
+// ignore: unused_element
+  Product fromJson(Map<String, Object> json) {
+    return Product.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -51,6 +59,7 @@ mixin _$Product {
   String get description;
   double get customerReviewAverage;
 
+  Map<String, dynamic> toJson();
   $ProductCopyWith<Product> get copyWith;
 }
 
@@ -160,6 +169,8 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Product implements _Product {
   const _$_Product(
@@ -178,6 +189,9 @@ class _$_Product implements _Product {
         assert(salePrice != null),
         assert(onSale != null),
         assert(description != null);
+
+  factory _$_Product.fromJson(Map<String, dynamic> json) =>
+      _$_$_ProductFromJson(json);
 
   @override
   final int sku;
@@ -242,6 +256,11 @@ class _$_Product implements _Product {
   @override
   _$ProductCopyWith<_Product> get copyWith =>
       __$ProductCopyWithImpl<_Product>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ProductToJson(this);
+  }
 }
 
 abstract class _Product implements Product {
@@ -254,6 +273,8 @@ abstract class _Product implements Product {
       @required bool onSale,
       @required String description,
       double customerReviewAverage}) = _$_Product;
+
+  factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
   int get sku;
