@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:animations/animations.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:shopping_app_prototype/constants/constants.dart';
+import 'package:shopping_app_prototype/modules/product_details/pages/product_details_page.dart';
 import 'package:shopping_app_prototype/modules/products/bloc/products_bloc.dart';
 import 'package:shopping_app_prototype/modules/products/models/product.dart';
 import 'package:shopping_app_prototype/modules/products/widgets/widgets.dart';
@@ -67,7 +70,19 @@ class _ProductsListViewState extends State<ProductsListView> {
             _shouldLoadMoreProducts ? _productsCount + 1 : _productsCount,
         itemBuilder: (_, i) => i >= _productsCount
             ? CircularLoader()
-            : ProductCard(product: widget.products[i]),
+            : Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: LayoutConstants.kPaddingM,
+                  vertical: LayoutConstants.kPaddingS,
+                ),
+                child: OpenContainer(
+                  openColor: Colors.transparent,
+                  openBuilder: (_, __) =>
+                      ProductDetailsPage(product: widget.products[i]),
+                  closedBuilder: (_, openContainer) =>
+                      ProductCard(product: widget.products[i]),
+                ),
+              ),
       ),
     );
   }
