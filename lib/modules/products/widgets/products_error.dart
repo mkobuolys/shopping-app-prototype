@@ -12,7 +12,10 @@ class ProductsError extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Oops, something went wrong...'),
+          Text(
+            'Oops, something went wrong...',
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
           const SizedBox(height: LayoutConstants.kSpaceM),
           FlatButton(
             child: Text(

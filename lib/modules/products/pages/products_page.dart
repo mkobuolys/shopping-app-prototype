@@ -12,13 +12,7 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Promoted products'),
-        actions: [
-          ShoppingCardButton(),
-        ],
-      ),
+      appBar: CustomAppBar(title: 'Promoted products'),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         builder: (context, state) => state.map<Widget>(
           initial: (_) => ProductsLoading(),

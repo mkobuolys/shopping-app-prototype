@@ -17,10 +17,9 @@ class ProductPrice extends StatelessWidget {
         ? Text.rich(
             TextSpan(
               text: '\$$regularPrice',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                decoration: TextDecoration.lineThrough,
-              ),
+              style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                  ),
               children: <TextSpan>[
                 TextSpan(
                   text: ' \$$salePrice',
@@ -34,7 +33,7 @@ class ProductPrice extends StatelessWidget {
           )
         : Text(
             '\$$salePrice',
-            style: TextStyle(fontWeight: FontWeight.w600),
+            style: Theme.of(context).textTheme.bodyText1,
           );
   }
 }
