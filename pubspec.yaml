@@ -24,9 +24,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  bloc_test: ^7.1.0
   build_runner: ^1.10.11
   freezed: ^0.12.6
   json_serializable: ^3.5.1
+  mockito: ^4.1.3
 
 flutter:
   uses-material-design: true
