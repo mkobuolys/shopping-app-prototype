@@ -11,5 +11,4 @@ void initHydratedBloc() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   HydratedBloc.storage = MockStorage();
-  ;
 }
