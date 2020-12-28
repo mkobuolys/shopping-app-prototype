@@ -7,7 +7,7 @@ class CircularLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: const EdgeInsets.all(LayoutConstants.kPaddingM),
+      padding: const EdgeInsets.all(LayoutConstants.paddingM),
       child: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation(Colors.black),
       ),

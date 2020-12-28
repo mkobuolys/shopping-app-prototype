@@ -9,7 +9,7 @@ class MockProductsRepository extends Mock implements ProductsRepository {}
 
 void main() {
   group('ProductsBloc', () {
-    const waitDuration = Duration(seconds: 1);
+    const waitDuration = Duration(milliseconds: 600);
     const product1 = Product(
       sku: 1,
       name: 'Product 1',

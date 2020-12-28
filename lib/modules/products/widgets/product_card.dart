@@ -17,7 +17,7 @@ class ProductCard extends StatelessWidget {
     return Material(
       elevation: 1.0,
       child: Container(
-        padding: const EdgeInsets.all(LayoutConstants.kPaddingM),
+        padding: const EdgeInsets.all(LayoutConstants.paddingM),
         color: Colors.white,
         child: Row(
           children: [
@@ -25,7 +25,7 @@ class ProductCard extends StatelessWidget {
               imageUrl: product.image,
               imageWidth: 88.0,
             ),
-            const SizedBox(width: LayoutConstants.kSpaceL),
+            const SizedBox(width: LayoutConstants.spaceL),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +36,7 @@ class ProductCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
-                  const SizedBox(height: LayoutConstants.kSpaceM),
+                  const SizedBox(height: LayoutConstants.spaceM),
                   ProductPrice(
                     onSale: product.onSale,
                     regularPrice: product.regularPrice,

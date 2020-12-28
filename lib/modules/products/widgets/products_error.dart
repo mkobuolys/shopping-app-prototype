@@ -16,7 +16,7 @@ class ProductsError extends StatelessWidget {
             'Oops, something went wrong...',
             style: Theme.of(context).textTheme.subtitle1,
           ),
-          const SizedBox(height: LayoutConstants.kSpaceM),
+          const SizedBox(height: LayoutConstants.spaceM),
           FlatButton(
             child: Text(
               'Retry',

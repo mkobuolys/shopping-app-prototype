@@ -72,8 +72,8 @@ class _ProductsListViewState extends State<ProductsListView> {
             ? CircularLoader()
             : Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: LayoutConstants.kPaddingM,
-                  vertical: LayoutConstants.kPaddingS,
+                  horizontal: LayoutConstants.paddingM,
+                  vertical: LayoutConstants.paddingS,
                 ),
                 child: OpenContainer(
                   openColor: Colors.transparent,

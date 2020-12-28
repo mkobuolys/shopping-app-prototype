@@ -1,17 +1,27 @@
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:shopping_app_prototype/modules/products/bloc/products_bloc.dart';
-import 'package:shopping_app_prototype/modules/products/models/products_data.dart';
-import 'package:shopping_app_prototype/modules/products/repositories/products_repository.dart';
 import 'package:shopping_app_prototype/modules/products/widgets/products_error.dart';
 
-class MockProductsRepository extends Mock implements ProductsRepository {}
+class MockProductsBloc extends MockBloc<ProductsState> implements ProductsBloc {
+}
 
 void main() {
   group('ProductsError', () {
+    ProductsBloc productsBloc;
+
+    setUp(() {
+      productsBloc = MockProductsBloc();
+    });
+
+    tearDown(() {
+      productsBloc.close();
+    });
+
     testWidgets(
       'should render products error widget',
       (tester) async {
@@ -31,19 +41,11 @@ void main() {
     testWidgets(
       'should start loading products on retry button tap',
       (tester) async {
-        final repository = MockProductsRepository();
-        when(repository.getProductsData(any)).thenAnswer(
-          (_) async => ProductsData(
-            products: [],
-            total: 0,
-          ),
-        );
-
-        final bloc = ProductsBloc(repository: repository);
+        when(productsBloc.state).thenReturn(ProductsState.loadFailure());
 
         await tester.pumpWidget(
           BlocProvider.value(
-            value: bloc,
+            value: productsBloc,
             child: MaterialApp(
               home: Scaffold(
                 body: ProductsError(),
@@ -52,10 +54,11 @@ void main() {
           ),
         );
 
+        await tester.pumpAndSettle();
         await tester.tap(find.widgetWithText(FlatButton, 'Retry'));
-        await tester.pump(const Duration(milliseconds: 500));
 
-        verify(repository.getProductsData(any)).called(1);
+        verify(productsBloc.add(ProductsLoadStarted(isRefresh: true)))
+            .called(1);
       },
     );
   });

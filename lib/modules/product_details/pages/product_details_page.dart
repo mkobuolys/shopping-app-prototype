@@ -30,7 +30,7 @@ class ProductDetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(LayoutConstants.kPaddingL),
+                      padding: const EdgeInsets.all(LayoutConstants.paddingL),
                       child: Center(
                         child: SizedNetworkImage(
                           imageUrl: product.image,
@@ -40,8 +40,7 @@ class ProductDetailsPage extends StatelessWidget {
                     ),
                     Expanded(
                       child: Container(
-                        padding:
-                            const EdgeInsets.all(LayoutConstants.kPaddingL),
+                        padding: const EdgeInsets.all(LayoutConstants.paddingL),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(32.0),
@@ -56,7 +55,7 @@ class ProductDetailsPage extends StatelessWidget {
                               style: Theme.of(context).textTheme.headline6,
                               textAlign: TextAlign.justify,
                             ),
-                            const SizedBox(height: LayoutConstants.kSpaceL),
+                            const SizedBox(height: LayoutConstants.spaceL),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -83,7 +82,7 @@ class ProductDetailsPage extends StatelessWidget {
                                   ),
                               ],
                             ),
-                            const SizedBox(height: LayoutConstants.kSpaceL),
+                            const SizedBox(height: LayoutConstants.spaceL),
                             Text(
                               product.description,
                               style: Theme.of(context).textTheme.bodyText2,
