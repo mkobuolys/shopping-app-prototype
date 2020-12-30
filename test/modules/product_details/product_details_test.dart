@@ -1,4 +1,4 @@
-import 'pages/product_details_page_test.dart' as product_details_page_test;
+import 'product_details_page_test.dart' as product_details_page_test;
 import 'widgets/widgets_test.dart' as widgets_test;
 
 void main() {

@@ -32,7 +32,7 @@ class ProductPrice extends StatelessWidget {
             ),
           )
         : Text(
-            '\$$salePrice',
+            '\$$regularPrice',
             style: Theme.of(context).textTheme.bodyText1,
           );
   }
