@@ -57,7 +57,7 @@ void main() {
       (tester) async {
         when(bloc.state).thenReturn(
           ProductsState.loadSuccess(
-            products: BuiltList<Product>([]),
+            products: <Product>[].build(),
             total: 0,
           ),
         );

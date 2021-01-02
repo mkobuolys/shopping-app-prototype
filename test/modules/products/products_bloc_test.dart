@@ -31,7 +31,7 @@ void main() {
       description:
           'Tempor sint aliqua quis ullamco irure sit dolore labore sunt proident fugiat. Ad adipisicing anim reprehenderit occaecat elit aliqua.',
     );
-    final products = BuiltList<Product>([product1, product2]);
+    final products = [product1, product2].build();
 
     ProductsRepository productsRepository;
     ProductsBloc productsBloc;
@@ -142,14 +142,14 @@ void main() {
           const ProductsEvent.loadStarted(isRefresh: true),
         ),
         seed: ProductsState.loadSuccess(
-          products: BuiltList<Product>([product1]),
+          products: [product1].build(),
           total: 1,
         ),
         wait: waitDuration,
         expect: <ProductsState>[
           ProductsState.initial(),
           ProductsState.loadSuccess(
-            products: BuiltList<Product>([product2]),
+            products: [product2].build(),
             total: 1,
           ),
         ],
@@ -171,7 +171,7 @@ void main() {
           const ProductsEvent.loadStarted(isRefresh: false),
         ),
         seed: ProductsState.loadSuccess(
-          products: BuiltList<Product>([product1]),
+          products: [product1].build(),
           total: 1,
         ),
         wait: waitDuration,

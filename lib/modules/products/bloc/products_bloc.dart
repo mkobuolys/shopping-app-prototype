@@ -1,14 +1,13 @@
-import 'package:meta/meta.dart';
-
 import 'package:built_collection/built_collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:shopping_app_prototype/modules/products/products.dart';
 
-part 'products_state.dart';
 part 'products_event.dart';
+part 'products_state.dart';
 part 'products_bloc.freezed.dart';
 
 class ProductsBloc extends HydratedBloc<ProductsEvent, ProductsState> {
@@ -56,14 +55,14 @@ class ProductsBloc extends HydratedBloc<ProductsEvent, ProductsState> {
 
     final loadedProducts = state.maybeMap<BuiltList<Product>>(
       loadSuccess: (ProductsLoadSuccess successState) => successState.products,
-      orElse: () => BuiltList<Product>(),
+      orElse: () => <Product>[].build(),
     );
     final from = isRefresh ? 0 : loadedProducts.length;
 
     try {
       final productsData = await repository.getProductsData(from);
       final products = isRefresh
-          ? BuiltList<Product>(productsData.products)
+          ? productsData.products.build()
           : loadedProducts.rebuild((b) => b.addAll(productsData.products));
 
       yield ProductsState.loadSuccess(
@@ -82,7 +81,7 @@ class ProductsBloc extends HydratedBloc<ProductsEvent, ProductsState> {
         productsJsonList.map((product) => Product.fromJson(product)).toList();
 
     return ProductsState.loadSuccess(
-      products: BuiltList<Product>(products),
+      products: products.build(),
       total: json['total'] as int,
     );
   }

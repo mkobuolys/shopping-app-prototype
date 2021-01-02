@@ -15,7 +15,7 @@ class MockProductsBloc extends MockBloc<ProductsState> implements ProductsBloc {
 void main() {
   group('ProductsListView', () {
     ProductsBloc productsBloc;
-    final products = BuiltList<Product>([
+    final products = <Product>[
       for (var i = 1; i <= 20; i++)
         Product(
           sku: i,
@@ -27,7 +27,7 @@ void main() {
           description: 'Description $i',
           customerReviewAverage: 4.5,
         )
-    ]);
+    ].build();
 
     setUp(() {
       productsBloc = MockProductsBloc();
