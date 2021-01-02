@@ -22,16 +22,24 @@ class CartBloc extends HydratedBloc<CartEvent, CartState> {
       );
 
   Stream<CartState> _mapAddedToState(
-    CartEventAdded event,
+    ProductAdded event,
   ) async* {
     final cartItem = CartItem(count: 1, product: event.product);
-    final items = state.items.rebuild((builder) => builder.add(cartItem));
+    final cartItemIndex = state.items.indexWhere(
+      (item) => item.product == cartItem.product,
+    );
 
-    yield state.copyWith(items: items);
+    if (cartItemIndex >= 0) {
+      yield* _increaseCartItemCount(cartItem, cartItemIndex);
+    } else {
+      final items = state.items.rebuild((builder) => builder.add(cartItem));
+
+      yield state.copyWith(items: items);
+    }
   }
 
   Stream<CartState> _mapRemovedToState(
-    CartEventRemoved event,
+    CartItemRemoved event,
   ) async* {
     final cartItem = event.item;
 
@@ -39,31 +47,53 @@ class CartBloc extends HydratedBloc<CartEvent, CartState> {
   }
 
   Stream<CartState> _mapCountIncreasedToState(
-    CartEventCountIncreased event,
+    CartItemCountIncreased event,
   ) async* {
     final cartItem = event.item;
     final cartItemIndex = state.items.indexOf(cartItem);
-    final items = state.items.rebuild(
-      (builder) =>
-          builder[cartItemIndex] = cartItem.copyWith(count: cartItem.count + 1),
-    );
 
-    yield state.copyWith(items: items);
+    if (cartItemIndex >= 0) {
+      yield* _increaseCartItemCount(cartItem, cartItemIndex);
+    }
   }
 
   Stream<CartState> _mapCountDecreasedToState(
-    CartEventCountDecreased event,
+    CartItemCountDecreased event,
   ) async* {
     final cartItem = event.item;
 
-    if (cartItem.count == 1) {
+    if (cartItem.count > 1) {
+      final cartItemIndex = state.items.indexOf(cartItem);
+
+      if (cartItemIndex >= 0) {
+        yield* _decreaseCartItemCount(cartItem, cartItemIndex);
+      }
+    } else {
       yield* _removeCartItem(cartItem);
     }
+  }
 
-    final cartItemIndex = state.items.indexOf(cartItem);
+  Stream<CartState> _increaseCartItemCount(
+    CartItem item,
+    int index,
+  ) async* {
+    yield* _changeCartItemCount(item, index, 1);
+  }
+
+  Stream<CartState> _decreaseCartItemCount(
+    CartItem item,
+    int index,
+  ) async* {
+    yield* _changeCartItemCount(item, index, -1);
+  }
+
+  Stream<CartState> _changeCartItemCount(
+    CartItem item,
+    int index,
+    int value,
+  ) async* {
     final items = state.items.rebuild(
-      (builder) =>
-          builder[cartItemIndex] = cartItem.copyWith(count: cartItem.count - 1),
+      (builder) => builder[index] = item.copyWith(count: item.count + value),
     );
 
     yield state.copyWith(items: items);

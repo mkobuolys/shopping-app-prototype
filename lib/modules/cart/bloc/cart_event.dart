@@ -4,14 +4,14 @@ part of 'cart_bloc.dart';
 abstract class CartEvent with _$CartEvent {
   const factory CartEvent.added({
     @required Product product,
-  }) = CartEventAdded;
+  }) = ProductAdded;
   const factory CartEvent.removed({
     @required CartItem item,
-  }) = CartEventRemoved;
+  }) = CartItemRemoved;
   const factory CartEvent.countIncreased({
     @required CartItem item,
-  }) = CartEventCountIncreased;
+  }) = CartItemCountIncreased;
   const factory CartEvent.countDecreased({
     @required CartItem item,
-  }) = CartEventCountDecreased;
+  }) = CartItemCountDecreased;
 }

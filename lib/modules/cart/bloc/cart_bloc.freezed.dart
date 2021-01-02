@@ -14,29 +14,29 @@ class _$CartEventTearOff {
   const _$CartEventTearOff();
 
 // ignore: unused_element
-  CartEventAdded added({@required Product product}) {
-    return CartEventAdded(
+  ProductAdded added({@required Product product}) {
+    return ProductAdded(
       product: product,
     );
   }
 
 // ignore: unused_element
-  CartEventRemoved removed({@required CartItem item}) {
-    return CartEventRemoved(
+  CartItemRemoved removed({@required CartItem item}) {
+    return CartItemRemoved(
       item: item,
     );
   }
 
 // ignore: unused_element
-  CartEventCountIncreased countIncreased({@required CartItem item}) {
-    return CartEventCountIncreased(
+  CartItemCountIncreased countIncreased({@required CartItem item}) {
+    return CartItemCountIncreased(
       item: item,
     );
   }
 
 // ignore: unused_element
-  CartEventCountDecreased countDecreased({@required CartItem item}) {
-    return CartEventCountDecreased(
+  CartItemCountDecreased countDecreased({@required CartItem item}) {
+    return CartItemCountDecreased(
       item: item,
     );
   }
@@ -65,17 +65,17 @@ mixin _$CartEvent {
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult added(CartEventAdded value),
-    @required TResult removed(CartEventRemoved value),
-    @required TResult countIncreased(CartEventCountIncreased value),
-    @required TResult countDecreased(CartEventCountDecreased value),
+    @required TResult added(ProductAdded value),
+    @required TResult removed(CartItemRemoved value),
+    @required TResult countIncreased(CartItemCountIncreased value),
+    @required TResult countDecreased(CartItemCountDecreased value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult added(CartEventAdded value),
-    TResult removed(CartEventRemoved value),
-    TResult countIncreased(CartEventCountIncreased value),
-    TResult countDecreased(CartEventCountDecreased value),
+    TResult added(ProductAdded value),
+    TResult removed(CartItemRemoved value),
+    TResult countIncreased(CartItemCountIncreased value),
+    TResult countDecreased(CartItemCountDecreased value),
     @required TResult orElse(),
   });
 }
@@ -96,30 +96,30 @@ class _$CartEventCopyWithImpl<$Res> implements $CartEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $CartEventAddedCopyWith<$Res> {
-  factory $CartEventAddedCopyWith(
-          CartEventAdded value, $Res Function(CartEventAdded) then) =
-      _$CartEventAddedCopyWithImpl<$Res>;
+abstract class $ProductAddedCopyWith<$Res> {
+  factory $ProductAddedCopyWith(
+          ProductAdded value, $Res Function(ProductAdded) then) =
+      _$ProductAddedCopyWithImpl<$Res>;
   $Res call({Product product});
 
   $ProductCopyWith<$Res> get product;
 }
 
 /// @nodoc
-class _$CartEventAddedCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
-    implements $CartEventAddedCopyWith<$Res> {
-  _$CartEventAddedCopyWithImpl(
-      CartEventAdded _value, $Res Function(CartEventAdded) _then)
-      : super(_value, (v) => _then(v as CartEventAdded));
+class _$ProductAddedCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
+    implements $ProductAddedCopyWith<$Res> {
+  _$ProductAddedCopyWithImpl(
+      ProductAdded _value, $Res Function(ProductAdded) _then)
+      : super(_value, (v) => _then(v as ProductAdded));
 
   @override
-  CartEventAdded get _value => super._value as CartEventAdded;
+  ProductAdded get _value => super._value as ProductAdded;
 
   @override
   $Res call({
     Object product = freezed,
   }) {
-    return _then(CartEventAdded(
+    return _then(ProductAdded(
       product: product == freezed ? _value.product : product as Product,
     ));
   }
@@ -136,8 +136,8 @@ class _$CartEventAddedCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$CartEventAdded implements CartEventAdded {
-  const _$CartEventAdded({@required this.product}) : assert(product != null);
+class _$ProductAdded implements ProductAdded {
+  const _$ProductAdded({@required this.product}) : assert(product != null);
 
   @override
   final Product product;
@@ -150,7 +150,7 @@ class _$CartEventAdded implements CartEventAdded {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CartEventAdded &&
+        (other is ProductAdded &&
             (identical(other.product, product) ||
                 const DeepCollectionEquality().equals(other.product, product)));
   }
@@ -160,8 +160,8 @@ class _$CartEventAdded implements CartEventAdded {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(product);
 
   @override
-  $CartEventAddedCopyWith<CartEventAdded> get copyWith =>
-      _$CartEventAddedCopyWithImpl<CartEventAdded>(this, _$identity);
+  $ProductAddedCopyWith<ProductAdded> get copyWith =>
+      _$ProductAddedCopyWithImpl<ProductAdded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -197,10 +197,10 @@ class _$CartEventAdded implements CartEventAdded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult added(CartEventAdded value),
-    @required TResult removed(CartEventRemoved value),
-    @required TResult countIncreased(CartEventCountIncreased value),
-    @required TResult countDecreased(CartEventCountDecreased value),
+    @required TResult added(ProductAdded value),
+    @required TResult removed(CartItemRemoved value),
+    @required TResult countIncreased(CartItemCountIncreased value),
+    @required TResult countDecreased(CartItemCountDecreased value),
   }) {
     assert(added != null);
     assert(removed != null);
@@ -212,10 +212,10 @@ class _$CartEventAdded implements CartEventAdded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult added(CartEventAdded value),
-    TResult removed(CartEventRemoved value),
-    TResult countIncreased(CartEventCountIncreased value),
-    TResult countDecreased(CartEventCountDecreased value),
+    TResult added(ProductAdded value),
+    TResult removed(CartItemRemoved value),
+    TResult countIncreased(CartItemCountIncreased value),
+    TResult countDecreased(CartItemCountDecreased value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -226,38 +226,38 @@ class _$CartEventAdded implements CartEventAdded {
   }
 }
 
-abstract class CartEventAdded implements CartEvent {
-  const factory CartEventAdded({@required Product product}) = _$CartEventAdded;
+abstract class ProductAdded implements CartEvent {
+  const factory ProductAdded({@required Product product}) = _$ProductAdded;
 
   Product get product;
-  $CartEventAddedCopyWith<CartEventAdded> get copyWith;
+  $ProductAddedCopyWith<ProductAdded> get copyWith;
 }
 
 /// @nodoc
-abstract class $CartEventRemovedCopyWith<$Res> {
-  factory $CartEventRemovedCopyWith(
-          CartEventRemoved value, $Res Function(CartEventRemoved) then) =
-      _$CartEventRemovedCopyWithImpl<$Res>;
+abstract class $CartItemRemovedCopyWith<$Res> {
+  factory $CartItemRemovedCopyWith(
+          CartItemRemoved value, $Res Function(CartItemRemoved) then) =
+      _$CartItemRemovedCopyWithImpl<$Res>;
   $Res call({CartItem item});
 
   $CartItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
-class _$CartEventRemovedCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
-    implements $CartEventRemovedCopyWith<$Res> {
-  _$CartEventRemovedCopyWithImpl(
-      CartEventRemoved _value, $Res Function(CartEventRemoved) _then)
-      : super(_value, (v) => _then(v as CartEventRemoved));
+class _$CartItemRemovedCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
+    implements $CartItemRemovedCopyWith<$Res> {
+  _$CartItemRemovedCopyWithImpl(
+      CartItemRemoved _value, $Res Function(CartItemRemoved) _then)
+      : super(_value, (v) => _then(v as CartItemRemoved));
 
   @override
-  CartEventRemoved get _value => super._value as CartEventRemoved;
+  CartItemRemoved get _value => super._value as CartItemRemoved;
 
   @override
   $Res call({
     Object item = freezed,
   }) {
-    return _then(CartEventRemoved(
+    return _then(CartItemRemoved(
       item: item == freezed ? _value.item : item as CartItem,
     ));
   }
@@ -274,8 +274,8 @@ class _$CartEventRemovedCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$CartEventRemoved implements CartEventRemoved {
-  const _$CartEventRemoved({@required this.item}) : assert(item != null);
+class _$CartItemRemoved implements CartItemRemoved {
+  const _$CartItemRemoved({@required this.item}) : assert(item != null);
 
   @override
   final CartItem item;
@@ -288,7 +288,7 @@ class _$CartEventRemoved implements CartEventRemoved {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CartEventRemoved &&
+        (other is CartItemRemoved &&
             (identical(other.item, item) ||
                 const DeepCollectionEquality().equals(other.item, item)));
   }
@@ -298,8 +298,8 @@ class _$CartEventRemoved implements CartEventRemoved {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(item);
 
   @override
-  $CartEventRemovedCopyWith<CartEventRemoved> get copyWith =>
-      _$CartEventRemovedCopyWithImpl<CartEventRemoved>(this, _$identity);
+  $CartItemRemovedCopyWith<CartItemRemoved> get copyWith =>
+      _$CartItemRemovedCopyWithImpl<CartItemRemoved>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -335,10 +335,10 @@ class _$CartEventRemoved implements CartEventRemoved {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult added(CartEventAdded value),
-    @required TResult removed(CartEventRemoved value),
-    @required TResult countIncreased(CartEventCountIncreased value),
-    @required TResult countDecreased(CartEventCountDecreased value),
+    @required TResult added(ProductAdded value),
+    @required TResult removed(CartItemRemoved value),
+    @required TResult countIncreased(CartItemCountIncreased value),
+    @required TResult countDecreased(CartItemCountDecreased value),
   }) {
     assert(added != null);
     assert(removed != null);
@@ -350,10 +350,10 @@ class _$CartEventRemoved implements CartEventRemoved {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult added(CartEventAdded value),
-    TResult removed(CartEventRemoved value),
-    TResult countIncreased(CartEventCountIncreased value),
-    TResult countDecreased(CartEventCountDecreased value),
+    TResult added(ProductAdded value),
+    TResult removed(CartItemRemoved value),
+    TResult countIncreased(CartItemCountIncreased value),
+    TResult countDecreased(CartItemCountDecreased value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -364,40 +364,39 @@ class _$CartEventRemoved implements CartEventRemoved {
   }
 }
 
-abstract class CartEventRemoved implements CartEvent {
-  const factory CartEventRemoved({@required CartItem item}) =
-      _$CartEventRemoved;
+abstract class CartItemRemoved implements CartEvent {
+  const factory CartItemRemoved({@required CartItem item}) = _$CartItemRemoved;
 
   CartItem get item;
-  $CartEventRemovedCopyWith<CartEventRemoved> get copyWith;
+  $CartItemRemovedCopyWith<CartItemRemoved> get copyWith;
 }
 
 /// @nodoc
-abstract class $CartEventCountIncreasedCopyWith<$Res> {
-  factory $CartEventCountIncreasedCopyWith(CartEventCountIncreased value,
-          $Res Function(CartEventCountIncreased) then) =
-      _$CartEventCountIncreasedCopyWithImpl<$Res>;
+abstract class $CartItemCountIncreasedCopyWith<$Res> {
+  factory $CartItemCountIncreasedCopyWith(CartItemCountIncreased value,
+          $Res Function(CartItemCountIncreased) then) =
+      _$CartItemCountIncreasedCopyWithImpl<$Res>;
   $Res call({CartItem item});
 
   $CartItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
-class _$CartEventCountIncreasedCopyWithImpl<$Res>
+class _$CartItemCountIncreasedCopyWithImpl<$Res>
     extends _$CartEventCopyWithImpl<$Res>
-    implements $CartEventCountIncreasedCopyWith<$Res> {
-  _$CartEventCountIncreasedCopyWithImpl(CartEventCountIncreased _value,
-      $Res Function(CartEventCountIncreased) _then)
-      : super(_value, (v) => _then(v as CartEventCountIncreased));
+    implements $CartItemCountIncreasedCopyWith<$Res> {
+  _$CartItemCountIncreasedCopyWithImpl(CartItemCountIncreased _value,
+      $Res Function(CartItemCountIncreased) _then)
+      : super(_value, (v) => _then(v as CartItemCountIncreased));
 
   @override
-  CartEventCountIncreased get _value => super._value as CartEventCountIncreased;
+  CartItemCountIncreased get _value => super._value as CartItemCountIncreased;
 
   @override
   $Res call({
     Object item = freezed,
   }) {
-    return _then(CartEventCountIncreased(
+    return _then(CartItemCountIncreased(
       item: item == freezed ? _value.item : item as CartItem,
     ));
   }
@@ -414,8 +413,8 @@ class _$CartEventCountIncreasedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$CartEventCountIncreased implements CartEventCountIncreased {
-  const _$CartEventCountIncreased({@required this.item}) : assert(item != null);
+class _$CartItemCountIncreased implements CartItemCountIncreased {
+  const _$CartItemCountIncreased({@required this.item}) : assert(item != null);
 
   @override
   final CartItem item;
@@ -428,7 +427,7 @@ class _$CartEventCountIncreased implements CartEventCountIncreased {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CartEventCountIncreased &&
+        (other is CartItemCountIncreased &&
             (identical(other.item, item) ||
                 const DeepCollectionEquality().equals(other.item, item)));
   }
@@ -438,8 +437,8 @@ class _$CartEventCountIncreased implements CartEventCountIncreased {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(item);
 
   @override
-  $CartEventCountIncreasedCopyWith<CartEventCountIncreased> get copyWith =>
-      _$CartEventCountIncreasedCopyWithImpl<CartEventCountIncreased>(
+  $CartItemCountIncreasedCopyWith<CartItemCountIncreased> get copyWith =>
+      _$CartItemCountIncreasedCopyWithImpl<CartItemCountIncreased>(
           this, _$identity);
 
   @override
@@ -476,10 +475,10 @@ class _$CartEventCountIncreased implements CartEventCountIncreased {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult added(CartEventAdded value),
-    @required TResult removed(CartEventRemoved value),
-    @required TResult countIncreased(CartEventCountIncreased value),
-    @required TResult countDecreased(CartEventCountDecreased value),
+    @required TResult added(ProductAdded value),
+    @required TResult removed(CartItemRemoved value),
+    @required TResult countIncreased(CartItemCountIncreased value),
+    @required TResult countDecreased(CartItemCountDecreased value),
   }) {
     assert(added != null);
     assert(removed != null);
@@ -491,10 +490,10 @@ class _$CartEventCountIncreased implements CartEventCountIncreased {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult added(CartEventAdded value),
-    TResult removed(CartEventRemoved value),
-    TResult countIncreased(CartEventCountIncreased value),
-    TResult countDecreased(CartEventCountDecreased value),
+    TResult added(ProductAdded value),
+    TResult removed(CartItemRemoved value),
+    TResult countIncreased(CartItemCountIncreased value),
+    TResult countDecreased(CartItemCountDecreased value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -505,40 +504,40 @@ class _$CartEventCountIncreased implements CartEventCountIncreased {
   }
 }
 
-abstract class CartEventCountIncreased implements CartEvent {
-  const factory CartEventCountIncreased({@required CartItem item}) =
-      _$CartEventCountIncreased;
+abstract class CartItemCountIncreased implements CartEvent {
+  const factory CartItemCountIncreased({@required CartItem item}) =
+      _$CartItemCountIncreased;
 
   CartItem get item;
-  $CartEventCountIncreasedCopyWith<CartEventCountIncreased> get copyWith;
+  $CartItemCountIncreasedCopyWith<CartItemCountIncreased> get copyWith;
 }
 
 /// @nodoc
-abstract class $CartEventCountDecreasedCopyWith<$Res> {
-  factory $CartEventCountDecreasedCopyWith(CartEventCountDecreased value,
-          $Res Function(CartEventCountDecreased) then) =
-      _$CartEventCountDecreasedCopyWithImpl<$Res>;
+abstract class $CartItemCountDecreasedCopyWith<$Res> {
+  factory $CartItemCountDecreasedCopyWith(CartItemCountDecreased value,
+          $Res Function(CartItemCountDecreased) then) =
+      _$CartItemCountDecreasedCopyWithImpl<$Res>;
   $Res call({CartItem item});
 
   $CartItemCopyWith<$Res> get item;
 }
 
 /// @nodoc
-class _$CartEventCountDecreasedCopyWithImpl<$Res>
+class _$CartItemCountDecreasedCopyWithImpl<$Res>
     extends _$CartEventCopyWithImpl<$Res>
-    implements $CartEventCountDecreasedCopyWith<$Res> {
-  _$CartEventCountDecreasedCopyWithImpl(CartEventCountDecreased _value,
-      $Res Function(CartEventCountDecreased) _then)
-      : super(_value, (v) => _then(v as CartEventCountDecreased));
+    implements $CartItemCountDecreasedCopyWith<$Res> {
+  _$CartItemCountDecreasedCopyWithImpl(CartItemCountDecreased _value,
+      $Res Function(CartItemCountDecreased) _then)
+      : super(_value, (v) => _then(v as CartItemCountDecreased));
 
   @override
-  CartEventCountDecreased get _value => super._value as CartEventCountDecreased;
+  CartItemCountDecreased get _value => super._value as CartItemCountDecreased;
 
   @override
   $Res call({
     Object item = freezed,
   }) {
-    return _then(CartEventCountDecreased(
+    return _then(CartItemCountDecreased(
       item: item == freezed ? _value.item : item as CartItem,
     ));
   }
@@ -555,8 +554,8 @@ class _$CartEventCountDecreasedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$CartEventCountDecreased implements CartEventCountDecreased {
-  const _$CartEventCountDecreased({@required this.item}) : assert(item != null);
+class _$CartItemCountDecreased implements CartItemCountDecreased {
+  const _$CartItemCountDecreased({@required this.item}) : assert(item != null);
 
   @override
   final CartItem item;
@@ -569,7 +568,7 @@ class _$CartEventCountDecreased implements CartEventCountDecreased {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CartEventCountDecreased &&
+        (other is CartItemCountDecreased &&
             (identical(other.item, item) ||
                 const DeepCollectionEquality().equals(other.item, item)));
   }
@@ -579,8 +578,8 @@ class _$CartEventCountDecreased implements CartEventCountDecreased {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(item);
 
   @override
-  $CartEventCountDecreasedCopyWith<CartEventCountDecreased> get copyWith =>
-      _$CartEventCountDecreasedCopyWithImpl<CartEventCountDecreased>(
+  $CartItemCountDecreasedCopyWith<CartItemCountDecreased> get copyWith =>
+      _$CartItemCountDecreasedCopyWithImpl<CartItemCountDecreased>(
           this, _$identity);
 
   @override
@@ -617,10 +616,10 @@ class _$CartEventCountDecreased implements CartEventCountDecreased {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult added(CartEventAdded value),
-    @required TResult removed(CartEventRemoved value),
-    @required TResult countIncreased(CartEventCountIncreased value),
-    @required TResult countDecreased(CartEventCountDecreased value),
+    @required TResult added(ProductAdded value),
+    @required TResult removed(CartItemRemoved value),
+    @required TResult countIncreased(CartItemCountIncreased value),
+    @required TResult countDecreased(CartItemCountDecreased value),
   }) {
     assert(added != null);
     assert(removed != null);
@@ -632,10 +631,10 @@ class _$CartEventCountDecreased implements CartEventCountDecreased {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult added(CartEventAdded value),
-    TResult removed(CartEventRemoved value),
-    TResult countIncreased(CartEventCountIncreased value),
-    TResult countDecreased(CartEventCountDecreased value),
+    TResult added(ProductAdded value),
+    TResult removed(CartItemRemoved value),
+    TResult countIncreased(CartItemCountIncreased value),
+    TResult countDecreased(CartItemCountDecreased value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -646,12 +645,12 @@ class _$CartEventCountDecreased implements CartEventCountDecreased {
   }
 }
 
-abstract class CartEventCountDecreased implements CartEvent {
-  const factory CartEventCountDecreased({@required CartItem item}) =
-      _$CartEventCountDecreased;
+abstract class CartItemCountDecreased implements CartEvent {
+  const factory CartItemCountDecreased({@required CartItem item}) =
+      _$CartItemCountDecreased;
 
   CartItem get item;
-  $CartEventCountDecreasedCopyWith<CartEventCountDecreased> get copyWith;
+  $CartItemCountDecreasedCopyWith<CartItemCountDecreased> get copyWith;
 }
 
 /// @nodoc
