@@ -16,17 +16,18 @@ An open-source Shopping Application prototype built with Dart and Flutter.
 
 ### Dependencies
 
-| Package              | Purpose                                                                                                                    |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| animations           | Pre-built Material Design transition patterns for smooth page/screen transitions.                                          |
-| built_collection     | Immutable collections to not allow any unexpected state mutations.                                                         |
-| cached_network_image | To load and cache network images.                                                                                          |
-| flutter_bloc         | State management solution implementing the BLoC pattern.                                                                   |
-| freezed_annotation   | Annotations for the _freezed_ code-generator.                                                                              |
-| hydrated_bloc        | An extension to the _flutter_bloc_ library which automatically persists and restores bloc states (used for state caching). |
-| path_provider        | To get commonly used locations on host platform file systems.                                                              |
-| pedantic             | The Dart analyzer settings and best practices used internally at Google (used for static code analysis).                   |
-| rxdart               | Used for asynchronous programming, leveraging the native Dart Streams API (e.g. debouncing multiple events in the stream). |
+| Package               | Purpose                                                                                                                    |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| animations            | Pre-built Material Design transition patterns for smooth page/screen transitions.                                          |
+| built_collection      | Immutable collections to not allow any unexpected state mutations.                                                         |
+| cached_network_image  | To load and cache network images.                                                                                          |
+| flutter_bloc          | State management solution implementing the BLoC pattern.                                                                   |
+| flutter_cache_manager | Generic cache manager for flutter. Used by CachedNetworkImage.                                                             |
+| freezed_annotation    | Annotations for the _freezed_ code-generator.                                                                              |
+| hydrated_bloc         | An extension to the _flutter_bloc_ library which automatically persists and restores bloc states (used for state caching). |
+| path_provider         | To get commonly used locations on host platform file systems.                                                              |
+| pedantic              | The Dart analyzer settings and best practices used internally at Google (used for static code analysis).                   |
+| rxdart                | Used for asynchronous programming, leveraging the native Dart Streams API (e.g. debouncing multiple events in the stream). |
 
 ### DEV Dependencies
 
