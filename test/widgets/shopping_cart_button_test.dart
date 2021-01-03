@@ -8,14 +8,14 @@ import 'package:mockito/mockito.dart';
 
 import 'package:shopping_app_prototype/constants/constants.dart';
 import 'package:shopping_app_prototype/modules/cart/cart.dart';
-import 'package:shopping_app_prototype/widgets/shopping_card_button.dart';
+import 'package:shopping_app_prototype/widgets/shopping_cart_button.dart';
 
 class MockCartBloc extends MockBloc<CartState> implements CartBloc {}
 
 class MockCartItem extends Mock implements CartItem {}
 
 void main() {
-  group('ShoppingCardButton', () {
+  group('ShoppingCartButton', () {
     CartBloc bloc;
     final mockCartItems = List.filled(3, MockCartItem()).build();
 
@@ -36,7 +36,7 @@ void main() {
             value: bloc,
             child: MaterialApp(
               home: Scaffold(
-                body: ShoppingCardButton(),
+                body: ShoppingCartButton(),
               ),
             ),
           ),
@@ -57,7 +57,7 @@ void main() {
             value: bloc,
             child: MaterialApp(
               home: Scaffold(
-                body: ShoppingCardButton(),
+                body: ShoppingCartButton(),
               ),
             ),
           ),
@@ -75,6 +75,31 @@ void main() {
           findsOneWidget,
         );
         expect(find.text('${mockCartItems.length}'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'should not show badge when shopping cart is empty',
+      (tester) async {
+        when(bloc.state).thenReturn(CartState.initial());
+
+        await tester.pumpWidget(
+          BlocProvider.value(
+            value: bloc,
+            child: MaterialApp(
+              home: Scaffold(
+                body: ShoppingCartButton(),
+              ),
+            ),
+          ),
+        );
+
+        expect(
+          find.byWidgetPredicate(
+            (widget) => widget is Badge && widget.showBadge == false,
+          ),
+          findsOneWidget,
+        );
       },
     );
   });

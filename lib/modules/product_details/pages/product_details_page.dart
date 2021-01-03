@@ -28,6 +28,7 @@ class ProductDetailsPage extends StatelessWidget {
         onPressed: () =>
             context.read<CartBloc>().add(ProductAdded(product: product)),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

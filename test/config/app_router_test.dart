@@ -6,6 +6,7 @@ import 'package:mockito/mockito.dart';
 
 import 'package:shopping_app_prototype/config/app_router.dart';
 import 'package:shopping_app_prototype/modules/cart/bloc/cart_bloc.dart';
+import 'package:shopping_app_prototype/modules/cart/pages/cart_page.dart';
 import 'package:shopping_app_prototype/modules/product_details/pages/product_details_page.dart';
 import 'package:shopping_app_prototype/modules/products/bloc/products_bloc.dart';
 import 'package:shopping_app_prototype/modules/products/models/product.dart';
@@ -54,6 +55,18 @@ void main() {
         ),
       );
     }
+
+    testWidgets(
+      'should return CartPage on /cart route',
+      (tester) async {
+        final settings = RouteSettings(name: CartPage.route);
+        final route = AppRouter.generateRoute(settings) as MaterialPageRoute;
+
+        await _renderLayout(tester, route);
+
+        expect(find.byType(CartPage), findsOneWidget);
+      },
+    );
 
     testWidgets(
       'should return ProductsPage on /products route',

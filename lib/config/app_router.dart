@@ -7,6 +7,8 @@ class AppRouter {
     RouteSettings settings,
   ) {
     switch (settings.name) {
+      case CartPage.route:
+        return MaterialPageRoute(builder: (_) => CartPage());
       case ProductsPage.route:
         return MaterialPageRoute(builder: (_) => ProductsPage());
       case ProductDetailsPage.route:

@@ -14,7 +14,7 @@ class ProductsPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: 'Promoted products'),
       body: BlocBuilder<ProductsBloc, ProductsState>(
-        builder: (context, state) => state.map<Widget>(
+        builder: (_, state) => state.map<Widget>(
           initial: (_) => ProductsLoading(),
           loadSuccess: (ProductsLoadSuccess productsLoadSuccessState) =>
               ProductsListView(

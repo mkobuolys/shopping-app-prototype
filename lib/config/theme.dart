@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 final ThemeData theme = ThemeData(
-  primarySwatch: Colors.blue,
-  visualDensity: VisualDensity.adaptivePlatformDensity,
+  accentColor: Colors.black,
   appBarTheme: _appBarTheme,
+  pageTransitionsTheme: _pageTransitionsTheme,
   scaffoldBackgroundColor: Colors.white.withOpacity(0.95),
-  typography: Typography.material2018(),
   textTheme: _textTheme,
+  typography: Typography.material2018(),
+  visualDensity: VisualDensity.adaptivePlatformDensity,
 );
 
 final AppBarTheme _appBarTheme = AppBarTheme(
@@ -16,6 +17,12 @@ final AppBarTheme _appBarTheme = AppBarTheme(
   textTheme: TextTheme(
     headline6: _TextStyles.headline6.copyWith(color: Colors.black87),
   ),
+);
+
+const PageTransitionsTheme _pageTransitionsTheme = PageTransitionsTheme(
+  builders: <TargetPlatform, PageTransitionsBuilder>{
+    TargetPlatform.android: ZoomPageTransitionsBuilder(),
+  },
 );
 
 final TextTheme _textTheme = TextTheme(

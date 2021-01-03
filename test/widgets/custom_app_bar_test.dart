@@ -5,8 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:shopping_app_prototype/modules/cart/bloc/cart_bloc.dart';
-import 'package:shopping_app_prototype/widgets/custom_app_bar.dart';
-import 'package:shopping_app_prototype/widgets/shopping_card_button.dart';
+import 'package:shopping_app_prototype/widgets/widgets.dart';
 
 class MockCartBloc extends MockBloc<CartState> implements CartBloc {}
 
@@ -49,7 +48,31 @@ void main() {
           findsOneWidget,
         );
         expect(find.text(title), findsOneWidget);
-        expect(find.byType(ShoppingCardButton), findsOneWidget);
+        expect(find.byType(ShoppingCartButton), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'should hide ShoppingCartButton when showShoppingCartButton flag is false',
+      (tester) async {
+        const title = 'Lorem Ipsum';
+
+        await tester.pumpWidget(
+          BlocProvider.value(
+            value: bloc,
+            child: MaterialApp(
+              home: Scaffold(
+                appBar: CustomAppBar(
+                  title: title,
+                  showShoppingCartButton: false,
+                ),
+                body: Container(),
+              ),
+            ),
+          ),
+        );
+
+        expect(find.byType(ShoppingCartButton), findsNothing);
       },
     );
   });

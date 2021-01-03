@@ -47,6 +47,7 @@ void main() {
           ),
         );
 
+        expect(find.byType(ProductDetailsContent), findsOneWidget);
         expect(
           find.byWidgetPredicate(
             (widget) => widget is CustomAppBar && widget.title == 'Details',
@@ -54,7 +55,12 @@ void main() {
           findsOneWidget,
         );
         expect(
-          find.byType(ProductDetailsContent),
+          find.byWidgetPredicate(
+            (widget) =>
+                widget is Scaffold &&
+                widget.floatingActionButtonLocation ==
+                    FloatingActionButtonLocation.centerFloat,
+          ),
           findsOneWidget,
         );
         expect(
