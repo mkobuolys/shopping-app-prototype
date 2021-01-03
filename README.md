@@ -19,6 +19,7 @@ An open-source Shopping Application prototype built with Dart and Flutter.
 | Package               | Purpose                                                                                                                    |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | animations            | Pre-built Material Design transition patterns for smooth page/screen transitions.                                          |
+| badges                | Used to show the current items count in the shopping cart.                                                                 |
 | built_collection      | Immutable collections to not allow any unexpected state mutations.                                                         |
 | cached_network_image  | To load and cache network images.                                                                                          |
 | flutter_bloc          | State management solution implementing the BLoC pattern.                                                                   |
