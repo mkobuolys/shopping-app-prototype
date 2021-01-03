@@ -34,9 +34,11 @@ An open-source Shopping Application prototype built with Dart and Flutter.
 
 | Package           | Purpose                                                                                       |
 | ----------------- | --------------------------------------------------------------------------------------------- |
+| bloc_test         | Used for BLoC testing.                                                                        |
 | build_runner      | A build system for Dart code generation and modular compilation.                              |
 | freezed           | Code generation for immutable classes (used to create immutable state class objects, models). |
 | json_serializable | Automatically generate code for converting to and from JSON by annotating Dart classes.       |
+| mockito           | A mock library to create fake test objects in unit tests.                                     |
 
 ## Building
 
