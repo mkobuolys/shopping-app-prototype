@@ -5,15 +5,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
+import 'package:shopping_app_prototype/modules/cart/bloc/cart_bloc.dart';
 import 'package:shopping_app_prototype/modules/product_details/widgets/product_details_content.dart';
 import 'package:shopping_app_prototype/modules/products/products.dart';
 import 'package:shopping_app_prototype/widgets/custom_app_bar.dart';
+
+class MockCartBloc extends MockBloc<CartState> implements CartBloc {}
 
 class MockProductsBloc extends MockBloc<ProductsState> implements ProductsBloc {
 }
 
 void main() {
   group('ProductsListView', () {
+    CartBloc cartBloc;
     ProductsBloc productsBloc;
     final products = <Product>[
       for (var i = 1; i <= 20; i++)
@@ -30,6 +34,9 @@ void main() {
     ].build();
 
     setUp(() {
+      cartBloc = MockCartBloc();
+      when(cartBloc.state).thenReturn(CartState.initial());
+
       productsBloc = MockProductsBloc();
       when(productsBloc.state).thenReturn(
         ProductsState.loadSuccess(
@@ -40,6 +47,7 @@ void main() {
     });
 
     tearDown(() {
+      cartBloc.close();
       productsBloc.close();
     });
 
@@ -48,8 +56,11 @@ void main() {
       int productsTotal,
     ) {
       return tester.pumpWidget(
-        BlocProvider.value(
-          value: productsBloc,
+        MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: cartBloc),
+            BlocProvider.value(value: productsBloc),
+          ],
           child: MaterialApp(
             home: Scaffold(
               body: ProductsListView(
@@ -85,6 +96,7 @@ void main() {
           (widget) => widget is ProductCard && widget.product == firstProduct,
         );
 
+        await tester.pump();
         await tester.tap(productCard);
         await tester.pump(const Duration(seconds: 1));
 

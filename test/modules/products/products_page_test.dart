@@ -5,23 +5,45 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
+import 'package:shopping_app_prototype/modules/cart/bloc/cart_bloc.dart';
 import 'package:shopping_app_prototype/modules/products/products.dart';
 import 'package:shopping_app_prototype/widgets/custom_app_bar.dart';
+
+class MockCartBloc extends MockBloc<CartState> implements CartBloc {}
 
 class MockProductsBloc extends MockBloc<ProductsState> implements ProductsBloc {
 }
 
 void main() {
   group('ProductsPage', () {
-    ProductsBloc bloc;
+    CartBloc cartBloc;
+    ProductsBloc productsBloc;
 
     setUp(() {
-      bloc = MockProductsBloc();
+      cartBloc = MockCartBloc();
+      when(cartBloc.state).thenReturn(CartState.initial());
+
+      productsBloc = MockProductsBloc();
     });
 
     tearDown(() {
-      bloc.close();
+      cartBloc.close();
+      productsBloc.close();
     });
+
+    Future<void> _renderProductsPage(WidgetTester tester) {
+      return tester.pumpWidget(
+        MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: cartBloc),
+            BlocProvider.value(value: productsBloc),
+          ],
+          child: MaterialApp(
+            home: ProductsPage(),
+          ),
+        ),
+      );
+    }
 
     void _expectCustomAppBarExists() {
       expect(
@@ -36,16 +58,9 @@ void main() {
     testWidgets(
       'should render ProductLoading widget on ProductsInitial state',
       (tester) async {
-        when(bloc.state).thenReturn(const ProductsState.initial());
+        when(productsBloc.state).thenReturn(const ProductsState.initial());
 
-        await tester.pumpWidget(
-          BlocProvider.value(
-            value: bloc,
-            child: MaterialApp(
-              home: ProductsPage(),
-            ),
-          ),
-        );
+        await _renderProductsPage(tester);
 
         _expectCustomAppBarExists();
         expect(find.byType(ProductsLoading), findsOneWidget);
@@ -55,21 +70,14 @@ void main() {
     testWidgets(
       'should render ProductsListView widget on ProductsLoadSuccess state',
       (tester) async {
-        when(bloc.state).thenReturn(
+        when(productsBloc.state).thenReturn(
           ProductsState.loadSuccess(
             products: <Product>[].build(),
             total: 0,
           ),
         );
 
-        await tester.pumpWidget(
-          BlocProvider.value(
-            value: bloc,
-            child: MaterialApp(
-              home: ProductsPage(),
-            ),
-          ),
-        );
+        await _renderProductsPage(tester);
 
         _expectCustomAppBarExists();
         expect(find.byType(ProductsListView), findsOneWidget);
@@ -79,16 +87,9 @@ void main() {
     testWidgets(
       'should render ProductsError widget on ProductsLoadFailure state',
       (tester) async {
-        when(bloc.state).thenReturn(const ProductsState.loadFailure());
+        when(productsBloc.state).thenReturn(const ProductsState.loadFailure());
 
-        await tester.pumpWidget(
-          BlocProvider.value(
-            value: bloc,
-            child: MaterialApp(
-              home: ProductsPage(),
-            ),
-          ),
-        );
+        await _renderProductsPage(tester);
 
         _expectCustomAppBarExists();
         expect(find.byType(ProductsError), findsOneWidget);

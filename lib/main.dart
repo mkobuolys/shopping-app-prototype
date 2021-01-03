@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'package:shopping_app_prototype/config/config.dart';
+import 'package:shopping_app_prototype/modules/cart/bloc/cart_bloc.dart';
 import 'package:shopping_app_prototype/modules/products/products.dart';
 import 'package:shopping_app_prototype/utils/utils.dart';
 
@@ -28,10 +29,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => ProductsBloc(
-        repository: repository,
-      )..add(ProductsInitialLoadStarted()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => ProductsBloc(
+            repository: repository,
+          )..add(ProductsInitialLoadStarted()),
+        ),
+        BlocProvider(create: (_) => CartBloc())
+      ],
       child: MaterialApp(
         title: 'Shopping App prototype',
         theme: theme,

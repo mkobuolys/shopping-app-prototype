@@ -5,26 +5,55 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import 'package:shopping_app_prototype/config/app_router.dart';
+import 'package:shopping_app_prototype/modules/cart/bloc/cart_bloc.dart';
 import 'package:shopping_app_prototype/modules/product_details/pages/product_details_page.dart';
 import 'package:shopping_app_prototype/modules/products/bloc/products_bloc.dart';
 import 'package:shopping_app_prototype/modules/products/models/product.dart';
 import 'package:shopping_app_prototype/modules/products/pages/products_page.dart';
+
+class MockCartBloc extends MockBloc<CartState> implements CartBloc {}
 
 class MockProductsBloc extends MockBloc<ProductsState> implements ProductsBloc {
 }
 
 void main() {
   group('AppRouter', () {
-    ProductsBloc bloc;
+    CartBloc cartBloc;
+    ProductsBloc productsBloc;
 
     setUp(() {
-      bloc = MockProductsBloc();
-      when(bloc.state).thenReturn(const ProductsState.initial());
+      cartBloc = MockCartBloc();
+      when(cartBloc.state).thenReturn(CartState.initial());
+
+      productsBloc = MockProductsBloc();
+      when(productsBloc.state).thenReturn(const ProductsState.initial());
     });
 
     tearDown(() {
-      bloc.close();
+      cartBloc.close();
+      productsBloc.close();
     });
+
+    Future<void> _renderLayout(
+      WidgetTester tester,
+      MaterialPageRoute route,
+    ) {
+      return tester.pumpWidget(
+        MultiBlocProvider(
+          providers: [
+            BlocProvider.value(value: cartBloc),
+            BlocProvider.value(value: productsBloc),
+          ],
+          child: MaterialApp(
+            home: Scaffold(
+              body: LayoutBuilder(
+                builder: (context, _) => route.buildContent(context),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
 
     testWidgets(
       'should return ProductsPage on /products route',
@@ -32,18 +61,7 @@ void main() {
         final settings = RouteSettings(name: ProductsPage.route);
         final route = AppRouter.generateRoute(settings) as MaterialPageRoute;
 
-        await tester.pumpWidget(
-          BlocProvider.value(
-            value: bloc,
-            child: MaterialApp(
-              home: Scaffold(
-                body: LayoutBuilder(
-                  builder: (context, _) => route.buildContent(context),
-                ),
-              ),
-            ),
-          ),
-        );
+        await _renderLayout(tester, route);
 
         expect(find.byType(ProductsPage), findsOneWidget);
       },
@@ -69,18 +87,7 @@ void main() {
         );
         final route = AppRouter.generateRoute(settings) as MaterialPageRoute;
 
-        await tester.pumpWidget(
-          BlocProvider.value(
-            value: bloc,
-            child: MaterialApp(
-              home: Scaffold(
-                body: LayoutBuilder(
-                  builder: (context, _) => route.buildContent(context),
-                ),
-              ),
-            ),
-          ),
-        );
+        await _renderLayout(tester, route);
 
         expect(
           find.byWidgetPredicate(
@@ -98,18 +105,7 @@ void main() {
         final settings = RouteSettings();
         final route = AppRouter.generateRoute(settings) as MaterialPageRoute;
 
-        await tester.pumpWidget(
-          BlocProvider.value(
-            value: bloc,
-            child: MaterialApp(
-              home: Scaffold(
-                body: LayoutBuilder(
-                  builder: (context, _) => route.buildContent(context),
-                ),
-              ),
-            ),
-          ),
-        );
+        await _renderLayout(tester, route);
 
         expect(find.byType(ProductsPage), findsOneWidget);
       },
