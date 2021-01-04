@@ -2,6 +2,14 @@
 
 An open-source Shopping Application prototype built with Dart and Flutter.
 
+<p float="left">
+	<img src="./screenshots/products.png" alt="Products Page" width="300">
+	<img src="./screenshots/products_error.png" alt="Products Error Page" width="300">
+	<img src="./screenshots/product_details.png" alt="Product Details Page" width="300">
+  <img src="./screenshots/cart.png" alt="Shopping Cart Page" width="300">
+	<img src="./screenshots/cart_empty.png" alt="Empty Shopping Cart Page" width="300">
+</p>
+
 ## Overview
 
 ### Features
