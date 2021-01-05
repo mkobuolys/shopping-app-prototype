@@ -21,6 +21,7 @@ An open-source Shopping Application prototype built with Dart and Flutter.
 - Material Design UI (not great, not terrible);
 - Clean code structure: code is separated to modules by feature, commonly used components, utils, constants are extracted;
 - Best Buy API client is implemented as a separate Dart package.
+- Unit/widget tests covering pretty much the whole code.
 
 ### Dependencies
 
