@@ -31,18 +31,26 @@ void main() {
       final page = 1;
       final pageSize = 20;
 
-      test('should throw Exception when response status code is not 200',
-          () async {
-        final response = MockHttpResponse();
+      test(
+        'should throw BestBuyApiException when response status code is not 200',
+        () async {
+          final response = MockHttpResponse();
 
-        when(response.statusCode).thenReturn(HttpStatus.badRequest);
-        when(httpClient.get(any)).thenAnswer((_) async => response);
+          when(response.statusCode).thenReturn(HttpStatus.badRequest);
+          when(httpClient.get(any)).thenAnswer((_) async => response);
 
-        final fn =
-            () async => await apiClient.getPromotedProducts(page, pageSize);
+          final fn =
+              () async => await apiClient.getPromotedProducts(page, pageSize);
 
-        expect(fn, throwsException);
-      });
+          expect(
+            fn,
+            throwsA(
+              isA<BestBuyApiException>().having(
+                  (e) => e.message, 'message', 'Failed to load products'),
+            ),
+          );
+        },
+      );
 
       test('should call Best Buy API with correct headers', () async {
         final response = MockHttpResponse();

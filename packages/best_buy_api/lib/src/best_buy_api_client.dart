@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
+import 'exceptions/exceptions.dart';
 import 'models/models.dart';
 
 class BestBuyApiClient {
@@ -35,7 +36,7 @@ class BestBuyApiClient {
     final response = await _httpClient.get(request);
 
     if (response.statusCode != HttpStatus.ok) {
-      throw Exception('Failed to load products');
+      throw BestBuyApiException('Failed to load products');
     }
 
     final productsResponseJson = jsonDecode(response.body);

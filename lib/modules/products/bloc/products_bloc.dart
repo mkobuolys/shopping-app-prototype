@@ -1,3 +1,4 @@
+import 'package:best_buy_api/best_buy_api.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -69,6 +70,8 @@ class ProductsBloc extends HydratedBloc<ProductsEvent, ProductsState> {
         products: products,
         total: productsData.total,
       );
+    } on BestBuyApiException {
+      yield ProductsState.loadFailure();
     } catch (e) {
       yield ProductsState.loadFailure();
     }

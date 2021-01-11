@@ -1,3 +1,4 @@
+import 'package:best_buy_api/best_buy_api.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -110,7 +111,24 @@ void main() {
 
     group('ProductsLoadStarted', () {
       blocTest<ProductsBloc, ProductsState>(
-        'should set state to ProductsLoadFailure on API exception',
+        'should set state to ProductsLoadFailure on BestBuyApiException',
+        build: () {
+          when(productsRepository.getProductsData(any))
+              .thenThrow(BestBuyApiException('Failed to load products'));
+
+          return ProductsBloc(repository: productsRepository);
+        },
+        act: (bloc) => bloc.add(
+          const ProductsEvent.loadStarted(isRefresh: false),
+        ),
+        wait: waitDuration,
+        expect: const <ProductsState>[
+          ProductsState.loadFailure(),
+        ],
+      );
+
+      blocTest<ProductsBloc, ProductsState>(
+        'should set state to ProductsLoadFailure on unhandled exception',
         build: () {
           when(productsRepository.getProductsData(any))
               .thenThrow(Exception('Error'));
