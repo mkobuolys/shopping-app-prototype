@@ -6,6 +6,8 @@ import 'package:shopping_app_prototype/constants/constants.dart';
 import 'package:shopping_app_prototype/modules/products/bloc/products_bloc.dart';
 
 class ProductsError extends StatelessWidget {
+  const ProductsError();
+
   @override
   Widget build(BuildContext context) {
     return Center(

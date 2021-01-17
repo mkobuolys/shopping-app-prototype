@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CartEmpty extends StatelessWidget {
+  const CartEmpty();
+
   @override
   Widget build(BuildContext context) {
     return Center(

@@ -15,13 +15,13 @@ class ProductsPage extends StatelessWidget {
       appBar: CustomAppBar(title: 'Promoted products'),
       body: BlocBuilder<ProductsBloc, ProductsState>(
         builder: (_, state) => state.map<Widget>(
-          initial: (_) => ProductsLoading(),
+          initial: (_) => const ProductsLoading(),
           loadSuccess: (ProductsLoadSuccess productsLoadSuccessState) =>
               ProductsListView(
             products: productsLoadSuccessState.products,
             productsTotal: productsLoadSuccessState.total,
           ),
-          loadFailure: (_) => ProductsError(),
+          loadFailure: (_) => const ProductsError(),
         ),
       ),
     );

@@ -7,6 +7,8 @@ import 'package:shopping_app_prototype/constants/layout_constants.dart';
 import 'package:shopping_app_prototype/modules/cart/cart.dart';
 
 class ShoppingCartButton extends StatelessWidget {
+  const ShoppingCartButton();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
@@ -25,7 +27,7 @@ class ShoppingCartButton extends StatelessWidget {
           ),
           showBadge: cartItems.isNotEmpty,
           child: IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart),
             onPressed: () => Navigator.pushNamed(
               context,
               CartPage.route,

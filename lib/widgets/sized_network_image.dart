@@ -25,8 +25,8 @@ class SizedNetworkImage extends StatelessWidget {
         child: CachedNetworkImage(
           cacheManager: cacheManager,
           imageUrl: imageUrl,
-          placeholder: (_, __) => CircularLoader(),
-          errorWidget: (context, url, error) => Icon(Icons.error),
+          placeholder: (_, __) => const CircularLoader(),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
     );

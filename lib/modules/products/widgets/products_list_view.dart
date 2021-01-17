@@ -69,7 +69,7 @@ class _ProductsListViewState extends State<ProductsListView> {
         itemCount:
             _shouldLoadMoreProducts ? _productsCount + 1 : _productsCount,
         itemBuilder: (_, i) => i >= _productsCount
-            ? CircularLoader()
+            ? const CircularLoader()
             : Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: LayoutConstants.paddingM,

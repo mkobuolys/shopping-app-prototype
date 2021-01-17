@@ -12,7 +12,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         title: 'Cart',
         showShoppingCartButton: false,
       ),
@@ -22,7 +22,7 @@ class CartPage extends StatelessWidget {
 
           return cartItems.isNotEmpty
               ? CartListView(cartItems: cartItems)
-              : CartEmpty();
+              : const CartEmpty();
         },
       ),
     );
