@@ -2,6 +2,8 @@
 
 An open-source Shopping Application prototype built with Dart and Flutter.
 
+Medium article: [Flutter Shopping App prototype: Lessons learned](https://mkobuolys.medium.com/flutter-shopping-app-prototype-lessons-learned-16d6646bbed7)
+
 <p float="left">
 	<img src="./screenshots/products.png" alt="Products Page" width="250">
 	<img src="./screenshots/products_error.png" alt="Products Error Page" width="250">
